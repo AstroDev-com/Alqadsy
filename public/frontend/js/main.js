@@ -8,7 +8,7 @@ jQuery(document).ready(function($) {
 
 	"use strict";
 
-	
+
 
 	var siteMenuClone = function() {
 
@@ -19,11 +19,11 @@ jQuery(document).ready(function($) {
 
 
 		setTimeout(function() {
-			
+
 			var counter = 0;
       $('.site-mobile-menu .has-children').each(function(){
         var $this = $(this);
-        
+
         $this.prepend('<span class="arrow-collapse collapsed">');
 
         $this.find('.arrow-collapse').attr({
@@ -49,8 +49,8 @@ jQuery(document).ready(function($) {
       } else {
         $this.addClass('active');
       }
-      e.preventDefault();  
-      
+      e.preventDefault();
+
     });
 
 		$(window).resize(function() {
@@ -75,7 +75,7 @@ jQuery(document).ready(function($) {
 				$('body').addClass('offcanvas-menu');
 				$this.addClass('active');
 			}
-		}) 
+		})
 
 		// click outisde offcanvas
 		$(document).mouseup(function(e) {
@@ -86,7 +86,7 @@ jQuery(document).ready(function($) {
 				}
 	    }
 		});
-	}; 
+	};
 	siteMenuClone();
 
 
@@ -222,7 +222,7 @@ jQuery(document).ready(function($) {
 		    + '<span class="countdown-block"><span class="label">%M</span> min </span>'
 		    + '<span class="countdown-block"><span class="label">%S</span> sec</span>'));
 		});
-				
+
 	};
 	siteCountDown();
 
@@ -278,7 +278,7 @@ jQuery(document).ready(function($) {
 					slidesPerView: 1
 				},
 				1024: {
-					slidesPerView: 2 
+					slidesPerView: 2
 				}
 			},
 			// paginationClickable: false,
@@ -290,5 +290,56 @@ jQuery(document).ready(function($) {
 	  })
 	}
 	swiperSetting();
+
+	// Customize lightGallery share buttons order and links
+	$(document).on('onAfterSlide.lg', '#lightgallery', function(event, prevIndex, index) {
+		var $gallery = $(this);
+		var instance = $gallery.data('lightGallery');
+		if (!instance) {
+			return;
+		}
+
+		var src = '';
+		if (instance.s.dynamic && instance.s.dynamicEl && instance.s.dynamicEl[index]) {
+			src = instance.s.dynamicEl[index].src || '';
+		} else if (instance.$items && instance.$items.eq(index).length) {
+			var $item = instance.$items.eq(index);
+			src = $item.attr('href') || $item.data('src') || '';
+			if (!src) {
+				var $img = $item.find('img').first();
+				src = $img.attr('src') || '';
+			}
+		}
+
+		var absoluteUrl;
+		try {
+			absoluteUrl = src ? new URL(src, window.location.origin).href : window.location.href;
+		} catch (err) {
+			absoluteUrl = window.location.href;
+		}
+
+		var $whatsappLink = $('#lg-share-whatsapp');
+		var $facebookLink = $('#lg-share-facebook');
+		var $dropdown = $('#lg-share .lg-dropdown');
+
+		if ($whatsappLink.length) {
+			// إرسال الصورة مباشرة بدلاً من الرابط فقط
+			var imageUrl = absoluteUrl;
+			$whatsappLink.attr('href', 'https://wa.me/?text=' + encodeURIComponent(imageUrl));
+			var $waItem = $whatsappLink.closest('li');
+			if ($dropdown.length && $waItem.length) {
+				$dropdown.prepend($waItem);
+			}
+		}
+
+		if ($facebookLink.length) {
+			$facebookLink.attr('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(absoluteUrl));
+			var $fbItem = $facebookLink.closest('li');
+			if ($dropdown.length && $fbItem.length && $whatsappLink.length) {
+				// Ensure Facebook stays after WhatsApp
+				$dropdown.append($fbItem);
+			}
+		}
+	});
 
 });

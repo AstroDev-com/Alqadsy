@@ -452,3 +452,4 @@
         color: var(--dark);
     }
 </style>
+<?php /**PATH D:\All My Project\GitHub_Project\Alqadsy\Alqadsy\resources\views/admin/includes/style.blade.php ENDPATH**/ ?>

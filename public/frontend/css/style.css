@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     line-height: 1.7;
-    color: #777;
+    color: #fff;
     font-weight: 300;
     font-size: 1rem;
     background: #000;
@@ -22,6 +22,23 @@ body {
 /* يجب أن يكون هناك عنصر رئيسي للمحتوى يحمل هذا الكلاس */
 .main-content {
     flex: 1 0 auto;
+}
+
+/* General text color override */
+* {
+    color: #fff !important;
+}
+
+/* Exceptions for specific elements that should keep their original colors */
+.btn.btn-black,
+.site-section-heading,
+.site-footer h2,
+.site-footer h3,
+.site-footer h4,
+.site-footer h5,
+.site-footer .footer-heading,
+.form-control {
+    color: inherit !important;
 }
 
 .site-wrap {
@@ -38,7 +55,7 @@ body {
 /* Base */
 body {
     line-height: 1.7;
-    color: #777;
+    color: #fff;
     font-weight: 300;
     font-size: 1rem;
     background: #000;
