@@ -4,18 +4,18 @@
 <head>
     @php
         $siteName = \App\Models\Setting::get('site_name', 'ورشة القدسي');
-        $siteDescription = \App\Models\Setting::get('site_description', 'ورشة القدسي - ورشة عبد الحكيم القدسي - القدسي للحديد - أفضل ورشة للحديد والأعمال المعدنية');
-        $metaDescription = \App\Models\Setting::get('meta_description', 'ورشة القدسي | ورشة عبد الحكيم القدسي | القدسي للحديد | أفضل ورشة للحديد والأعمال المعدنية في المنطقة');
-        $metaKeywords = \App\Models\Setting::get('meta_keywords', 'ورشة القدسي، ورشة عبد الحكيم القدسي، القدسي للحديد، القدسي، ورشة حديد، أعمال معدنية، حدادة');
+        $siteDescription = \App\Models\Setting::get('site_description', 'ورشة القدسي - ورشة عبدالحكيم القدسي - القدسي للحديد - أفضل ورشة للحديد والأعمال المعدنية');
+        $metaDescription = \App\Models\Setting::get('meta_description', 'ورشة القدسي | ورشة عبدالحكيم القدسي | القدسي للحديد | أفضل ورشة للحديد والأعمال المعدنية في المنطقة');
+        $metaKeywords = \App\Models\Setting::get('meta_keywords', 'ورشة القدسي، ورشة عبدالحكيم القدسي، القدسي للحديد، القدسي، ورشة حديد، أعمال معدنية، حدادة');
         $currentUrl = url()->current();
         $siteLogo = \App\Models\Setting::get('site_logo') ? asset('storage/settings/' . \App\Models\Setting::get('site_logo')) : asset('frontend/images/logo.png');
-        
+
         // Build social media URLs array for Schema.org
         $socialUrls = [];
         $facebookUrl = \App\Models\Setting::get('facebook_url', '');
         $instagramUrl = \App\Models\Setting::get('instagram_url', '');
         $twitterUrl = \App\Models\Setting::get('twitter_url', '');
-        
+
         if ($facebookUrl && $facebookUrl != 'https://facebook.com') {
             $socialUrls[] = $facebookUrl;
         }
@@ -26,41 +26,41 @@
             $socialUrls[] = $twitterUrl;
         }
     @endphp
-    
-    <title>ورشة القدسي | ورشة عبد الحكيم القدسي | القدسي للحديد | القدسي</title>
+
+    <title>ورشة القدسي | ورشة عبدالحكيم القدسي | القدسي للحديد | القدسي</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!-- Primary Meta Tags -->
-    <meta name="title" content="ورشة القدسي | ورشة عبد الحكيم القدسي | القدسي للحديد">
+    <meta name="title" content="ورشة القدسي | ورشة عبدالحكيم القدسي | القدسي للحديد">
     <meta name="description" content="{{ $metaDescription }}">
-    <meta name="keywords" content="{{ $metaKeywords }}, ورشة القدسي, ورشة عبد الحكيم القدسي, القدسي للحديد, القدسي">
+    <meta name="keywords" content="{{ $metaKeywords }}, ورشة القدسي, ورشة عبدالحكيم القدسي, القدسي للحديد, القدسي">
     <meta name="author" content="ورشة القدسي">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Arabic">
     <meta name="revisit-after" content="7 days">
     <meta name="geo.region" content="PS">
     <meta name="geo.placename" content="Palestine">
-    
+
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ $currentUrl }}">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ $currentUrl }}">
-    <meta property="og:title" content="ورشة القدسي | ورشة عبد الحكيم القدسي | القدسي للحديد">
+    <meta property="og:title" content="ورشة القدسي | ورشة عبدالحكيم القدسي | القدسي للحديد">
     <meta property="og:description" content="{{ $metaDescription }}">
     <meta property="og:image" content="{{ $siteLogo }}">
     <meta property="og:locale" content="ar_AR">
     <meta property="og:site_name" content="{{ $siteName }}">
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="{{ $currentUrl }}">
-    <meta name="twitter:title" content="ورشة القدسي | ورشة عبد الحكيم القدسي | القدسي للحديد">
+    <meta name="twitter:title" content="ورشة القدسي | ورشة عبدالحكيم القدسي | القدسي للحديد">
     <meta name="twitter:description" content="{{ $metaDescription }}">
     <meta name="twitter:image" content="{{ $siteLogo }}">
-    
+
     <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -96,7 +96,7 @@
             "@context" => "https://schema.org",
             "@type" => "LocalBusiness",
             "name" => "ورشة القدسي",
-            "alternateName" => ["ورشة عبد الحكيم القدسي", "القدسي للحديد", "القدسي"],
+            "alternateName" => ["ورشة عبدالحكيم القدسي", "القدسي للحديد", "القدسي"],
             "description" => $metaDescription,
             "url" => $currentUrl,
             "logo" => $siteLogo,
@@ -108,28 +108,28 @@
             ],
             "priceRange" => "$$",
             "openingHours" => "Mo-Su",
-            "keywords" => "ورشة القدسي، ورشة عبد الحكيم القدسي، القدسي للحديد، القدسي، ورشة حديد، أعمال معدنية، حدادة",
+            "keywords" => "ورشة القدسي، ورشة عبدالحكيم القدسي، القدسي للحديد، القدسي، ورشة حديد، أعمال معدنية، حدادة",
             "areaServed" => [
                 "@type" => "Country",
                 "name" => "Palestine"
             ]
         ];
-        
+
         if (\App\Models\Setting::get('contact_phone', '')) {
             $localBusinessSchema["telephone"] = \App\Models\Setting::get('contact_phone', '');
         }
-        
+
         if (\App\Models\Setting::get('contact_email', '')) {
             $localBusinessSchema["email"] = \App\Models\Setting::get('contact_email', '');
         }
-        
+
         if (!empty($socialUrls)) {
             $localBusinessSchema["sameAs"] = $socialUrls;
         }
     @endphp
     {!! json_encode($localBusinessSchema, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
-    
+
     <!-- Organization Schema -->
     <script type="application/ld+json">
     @php
@@ -137,11 +137,11 @@
             "@context" => "https://schema.org",
             "@type" => "Organization",
             "name" => "ورشة القدسي",
-            "alternateName" => ["ورشة عبد الحكيم القدسي", "القدسي للحديد", "القدسي"],
+            "alternateName" => ["ورشة عبدالحكيم القدسي", "القدسي للحديد", "القدسي"],
             "url" => $currentUrl,
             "logo" => $siteLogo
         ];
-        
+
         $contactPoint = [];
         if (\App\Models\Setting::get('contact_phone', '')) {
             $contactPoint["telephone"] = \App\Models\Setting::get('contact_phone', '');
@@ -154,7 +154,7 @@
             $contactPoint["contactType"] = "customer service";
             $organizationSchema["contactPoint"] = $contactPoint;
         }
-        
+
         if (!empty($socialUrls)) {
             $organizationSchema["sameAs"] = $socialUrls;
         }
