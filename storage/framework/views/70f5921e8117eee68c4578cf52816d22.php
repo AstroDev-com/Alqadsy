@@ -5,7 +5,7 @@
 
           <div class="col-6 col-xl-2" data-aos="fade-down">
            <a href="<?php echo e(url('/')); ?>">
-              <img src="<?php echo e(asset('frontend/images/WhatsApp Image 2025-07-11 at 22.38.22_43442221.jpg')); ?>" alt="ورشة القدسي" style="max-width: 90px; height: auto; border-radius: 50%;" />
+              <img src="<?php echo e(asset('frontend/images/Alqadsy.png')); ?>" alt="ورشة القدسي" style="max-width: 90px; height: auto; border-radius: 50%;" />
             </a>
           </div>
           <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
@@ -14,9 +14,9 @@
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
                 <li class="active"><a href="<?php echo e(url('/')); ?>">الرئيسية</a></li>
                 <li><a href="<?php echo e(route('gallery')); ?>">المعرض</a></li>
-                
+
                 <li><a href="<?php echo e(route('about')); ?>">من نحن</a></li>
-                
+
               </ul>
             </nav>
           </div>

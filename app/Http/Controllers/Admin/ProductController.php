@@ -215,7 +215,7 @@ class ProductController extends Controller
                 $constraint->upsize();
             });
             // إضافة العلامة المائية (صورة + رقم) في منتصف الصورة
-            $watermarkImagePath = public_path('frontend/images/WhatsApp Image 2025-07-11 at 22.38.22_43442221.jpg');
+            $watermarkImagePath = public_path('frontend/images/Alqadsybold.jpg');
             if (file_exists($watermarkImagePath)) {
                 $watermarkImg = $manager->read($watermarkImagePath);
                 // ضبط حجم العلامة المائية إلى 90×127 بكسل
