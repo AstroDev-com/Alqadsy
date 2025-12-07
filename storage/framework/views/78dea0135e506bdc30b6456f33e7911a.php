@@ -10,6 +10,7 @@
         $currentUrl = url()->current();
         $siteLogo = \App\Models\Setting::get('site_logo') ? asset('storage/settings/' . \App\Models\Setting::get('site_logo')) : asset('frontend/images/logo.png');
 
+
         // Build social media URLs array for Schema.org
         $socialUrls = [];
         $facebookUrl = \App\Models\Setting::get('facebook_url', '');
@@ -211,7 +212,18 @@
 
     <script>
         $(document).ready(function() {
-            $('#lightgallery').lightGallery();
+            $('#lightgallery').lightGallery({
+                mode: 'lg-slide',
+                startClass: '',
+                showAfterLoad: false,
+                enableSwipe: true,
+                enableDrag: true,
+                speed: 400,
+                hideBarsDelay: 6000,
+                zoom: false,
+                actualSize: false,
+                scale: 1
+            });
         });
     </script>
 
