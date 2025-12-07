@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2025 at 12:33 PM
+-- Generation Time: Dec 07, 2025 at 02:59 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `black_smeth`
+-- Database: `alqadsy`
 --
 
 -- --------------------------------------------------------
@@ -66,9 +66,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'أبواب', 'جيدة', 'images/categories/aboab-1751968585.png', '1', '2025-07-07 15:14:35', '2025-07-08 09:56:25'),
-(2, 'شبابيك', 'جيدة جدا', 'images/categories/shbabyk-1751968767.png', '1', '2025-07-07 15:14:55', '2025-07-08 09:59:27'),
-(7, 'سلالم', 'جيدة جدا', 'images/categories/slalm-1751968864.png', '1', '2025-07-07 16:28:35', '2025-07-08 10:01:04');
+(1, 'أبواب', 'جيدة', 'images/categories/aboab-1752263080.jpg', '1', '2025-07-07 15:14:35', '2025-07-11 22:44:40'),
+(2, 'شبابيك', 'جيدة جدا', 'images/categories/shbabyk-1752263111.jpg', '1', '2025-07-07 15:14:55', '2025-07-11 22:45:11'),
+(7, 'سلالم', 'جيدة جدا', 'images/categories/slalm-1752263155.jpg', '1', '2025-07-07 16:28:35', '2025-07-11 22:45:56'),
+(8, 'ابواب دكاكين', 'ابواب دكاكين 5 فتاحات', 'images/categories/aboab-dkakyn-1752263183.jpg', '1', '2025-07-10 14:04:19', '2025-07-11 22:46:23'),
+(9, 'أبواب شقق تركي', 'أبواب تركي مصفحة', 'images/categories/aboab-shkk-trky-1752263223.jpg', '1', '2025-07-11 14:34:09', '2025-07-11 22:47:03');
 
 -- --------------------------------------------------------
 
@@ -348,9 +350,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `image`, `status`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'باب حوش', 'حديث وجديد', 'images/products/bab-hosh-1751968213.png', '1', 1, '2025-07-07 15:33:24', '2025-07-08 09:50:13'),
-(2, 'شباك غرفة', 'حديثة', 'images/products/shbak-ghrf-1751968185.png', '1', 2, '2025-07-07 15:33:42', '2025-07-08 09:49:46'),
-(8, 'باب شقة', 'جيد', 'images/products/bab-shk2-1751968241.jpg', '1', 1, '2025-07-08 09:29:08', '2025-07-08 10:04:05');
+(1, 'باب حوش', 'حديث وجديد', 'images/products/bab-hosh-1752263243.jpg', '1', 1, '2025-07-07 15:33:24', '2025-07-11 22:47:23'),
+(2, 'شباك غرفة', 'حديثة', 'images/products/shbak-ghrf-1752263328.jpg', '1', 2, '2025-07-07 15:33:42', '2025-07-11 22:48:48'),
+(8, 'باب شقة', 'جيد', 'images/products/bab-shk-1752263340.jpg', '1', 1, '2025-07-08 09:29:08', '2025-07-11 22:49:00'),
+(9, 'سلم نحت', 'نحت', 'images/products/slm-nht-1752263355.jpg', '1', 7, '2025-07-10 14:05:49', '2025-07-11 22:49:15'),
+(10, 'دكاكين', 'دكاكين محلات', 'images/products/dkakyn-1752263367.jpg', '1', 8, '2025-07-10 14:06:22', '2025-07-11 22:49:27'),
+(18, 'سلم حديث', 'سلم حديث', 'images/products/slm-hdyth-1764012679.jpg', '1', 7, '2025-11-24 19:31:19', '2025-11-24 19:31:19'),
+(19, 'سلم حديث 1', 'سلم حديث 1', 'images/products/slm-hdyth-1-1764013374.jpg', '1', 7, '2025-11-24 19:43:08', '2025-11-24 19:43:08'),
+(21, 'سلم حديث3', 'سلم حديث3', 'images/products/slm-hdyth3-1764013675.jpg', '1', 7, '2025-11-24 19:47:56', '2025-11-24 19:47:56');
 
 -- --------------------------------------------------------
 
@@ -458,7 +465,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('24sQ12MnLMXr6g8A5trcF2V0QMKqWKHs69d5aTdG', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiaVZTTXg5d1BhcmxqTjE1QnFRUEIzNUdVMDBaZUEzWEttbENJU0hCVyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hci9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YTowOnt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6ImxvY2FsZSI7czoyOiJhciI7czo1OiJ0aGVtZSI7czo1OiJsaWdodCI7fQ==', 1751970604);
+('AR81BBEYJDshmbdF0TOGFvNeOnODViZtbTmaW63t', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 OPR/124.0.0.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiSEdkeVY5TXVCMmVlVG1kdDBkbE9ncTZIbUVtdjJGdUlLRkNHaWNaTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hci9wcm9kdWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo2OiJsb2NhbGUiO3M6MjoiYXIiO3M6NToidGhlbWUiO3M6NDoiZGFyayI7fQ==', 1765115961),
+('FDkb70kVRATwnRTAv67QhPctKsHXSzknctgKbkiG', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 OPR/124.0.0.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNDBESlduUzB3dTBTbzZ5a3NidW1BaEk3R0JzTFJxeWZVVmlabW0yNiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS8xIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6ImxvY2FsZSI7czoyOiJhciI7czo1OiJ0aGVtZSI7czo1OiJsaWdodCI7fQ==', 1765046005),
+('I0pX65yvKXZAD4XFqQTwVROW2PIfv9Fik2KM7xJQ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 OPR/124.0.0.0', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiOVhpQTRpZWFLY3d0NHg4ajRoY3FGSEpBMk5kYXJycFNKM0M5QkdzMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1765115912);
 
 -- --------------------------------------------------------
 
@@ -523,7 +532,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `profile_image`, `thumbnail`, `status`, `role`, `phone_number`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'المدير العام', 'superadmin@gmail.com', NULL, '$2y$12$mMjIug5NnXHReyk7oH3hF.W36mnb7HgxFxTx4Uj9NS4GxyWNPyX1a', NULL, NULL, '1', NULL, NULL, NULL, '2025-07-07 15:04:19', '2025-07-07 15:04:19', NULL),
 (2, 'المدير', 'admin@gmail.com', NULL, '$2y$12$NBqoqOj32PFKI.iK7DWvo.DGfOF2sSGp2r0isJYXDbCtjsaBJlCTC', NULL, NULL, '1', NULL, NULL, NULL, '2025-07-07 15:04:19', '2025-07-07 15:04:19', NULL),
-(3, 'المستخدم', 'user@gmail.com', NULL, '$2y$12$.8SfekFZU60.RsXevPqwSezLrshQgwGBvvM4Hq45M0ud9JSQbABqK', NULL, NULL, '1', NULL, NULL, NULL, '2025-07-07 15:04:19', '2025-07-07 15:04:19', NULL);
+(3, 'المستخدم', 'user@gmail.com', NULL, '$2y$12$.8SfekFZU60.RsXevPqwSezLrshQgwGBvvM4Hq45M0ud9JSQbABqK', NULL, NULL, '1', NULL, NULL, NULL, '2025-07-07 15:04:19', '2025-07-07 15:04:19', NULL),
+(4, 'adminxp', 'adminxp@gmail.com', NULL, '$2y$12$.yQJiExLXR4O/aSU81DtTuhYASq0is2QOVKEE/R8J7QLsJsZiczs2', NULL, NULL, '1', NULL, NULL, NULL, '2025-08-30 00:19:40', '2025-08-30 00:19:40', NULL);
 
 --
 -- Indexes for dumped tables
@@ -690,7 +700,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `conversations`
@@ -738,7 +748,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -756,7 +766,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
