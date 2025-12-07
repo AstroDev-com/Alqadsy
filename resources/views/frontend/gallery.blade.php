@@ -67,6 +67,39 @@
             align-items: center !important;
             justify-content: center !important;
         }
+        
+        /* عند السحب على زر المشاركة - خلفية سوداء وخط واضح */
+        .lg-outer #lg-share:hover {
+            background-color: #000 !important;
+            color: #FFF !important;
+        }
+        
+        /* قائمة المشاركة - خلفية سوداء وخط أبيض */
+        .lg-outer .lg-dropdown {
+            background-color: #000 !important;
+        }
+        
+        .lg-outer .lg-dropdown:after {
+            border-bottom-color: #000 !important;
+        }
+        
+        .lg-outer .lg-dropdown a {
+            color: #FFF !important;
+        }
+        
+        .lg-outer .lg-dropdown a:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #FFF !important;
+        }
+        
+        .lg-outer .lg-dropdown .lg-icon {
+            color: #FFF !important;
+        }
+        
+        .lg-outer .lg-dropdown > li:hover a,
+        .lg-outer .lg-dropdown > li:hover .lg-icon {
+            color: #FFF !important;
+        }
     </style>
     @endpush
 

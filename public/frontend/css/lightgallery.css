@@ -658,7 +658,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   color: #FFF;
 }
 .lg-outer .lg-dropdown {
-  background-color: #fff;
+  background-color: #000 !important;
   border-radius: 2px;
   font-size: 14px;
   list-style-type: none;
@@ -727,7 +727,7 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   width: 0;
   position: absolute;
   border: 8px solid transparent;
-  border-bottom-color: #FFF;
+  border-bottom-color: #000 !important;
   right: 16px;
   top: -16px;
 }
@@ -735,10 +735,10 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   margin-bottom: 0px;
 }
 .lg-outer .lg-dropdown > li:hover a, .lg-outer .lg-dropdown > li:hover .lg-icon {
-  color: #333;
+  color: #FFF !important;
 }
 .lg-outer .lg-dropdown a {
-  color: #333;
+  color: #FFF !important;
   display: block;
   white-space: pre;
   padding: 4px 12px;
@@ -746,7 +746,8 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   font-size: 12px;
 }
 .lg-outer .lg-dropdown a:hover {
-  background-color: rgba(0, 0, 0, 0.07);
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: #FFF !important;
 }
 .lg-outer .lg-dropdown .lg-dropdown-text {
   display: inline-block;
@@ -755,7 +756,7 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   vertical-align: middle;
 }
 .lg-outer .lg-dropdown .lg-icon {
-  color: #333;
+  color: #FFF !important;
   display: inline-block;
   float: none;
   font-size: 20px;
@@ -768,6 +769,10 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
 }
 .lg-outer #lg-share {
   position: relative;
+}
+.lg-outer #lg-share:hover {
+  background-color: #000 !important;
+  color: #FFF !important;
 }
 .lg-outer #lg-share:after {
   content: "\e80d";
