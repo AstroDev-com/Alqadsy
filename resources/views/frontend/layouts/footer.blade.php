@@ -7,7 +7,7 @@
                 <script>
                     document.write(new Date().getFullYear());
                 </script> All rights reserved | <i class="icon-heart-o" aria-hidden="true"></i> by <a
-                    href="AStrodevye.com" target="AstroDev">AstroDev</a>
+                    href="astrodevye.com" >AstroDev</a>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
         </div>
