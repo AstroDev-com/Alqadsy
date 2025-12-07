@@ -687,7 +687,7 @@ body:not(.day-mode) .lg-outer .lg-dropdown {
 body:not(.day-mode) .lg-outer .lg-dropdown:after {
   border-bottom-color: #FFF;
 }
-body:not(.day-mode) .lg-outer .lg-dropdown > li:hover a, 
+body:not(.day-mode) .lg-outer .lg-dropdown > li:hover a,
 body:not(.day-mode) .lg-outer .lg-dropdown > li:hover .lg-icon {
   color: #333;
 }
@@ -707,7 +707,7 @@ body.day-mode .lg-outer .lg-dropdown {
 body.day-mode .lg-outer .lg-dropdown:after {
   border-bottom-color: #000;
 }
-body.day-mode .lg-outer .lg-dropdown > li:hover a, 
+body.day-mode .lg-outer .lg-dropdown > li:hover a,
 body.day-mode .lg-outer .lg-dropdown > li:hover .lg-icon {
   color: #fff;
 }
@@ -868,6 +868,13 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   top: 0;
   white-space: nowrap;
 }
+
+/* توسيط العناصر في lg-inner */
+.lg-outer.lg-slide .lg-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 .lg-outer .lg-item {
   background: url("../img/loading.gif") no-repeat scroll center center transparent;
   display: none !important;
@@ -879,11 +886,13 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   display: inline-block !important;
 }
 .lg-outer .lg-item, .lg-outer .lg-img-wrap {
-  display: inline-block;
-  text-align: center;
+  display: flex !important;
+  text-align: center !important;
   position: absolute;
   width: 100%;
   height: 100%;
+  align-items: center !important;
+  justify-content: center !important;
 }
 .lg-outer .lg-item:before {
   content: "";
@@ -902,9 +911,10 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   right: 0;
   top: 0;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
 .lg-outer .lg-item.lg-complete {
   background-image: none;
@@ -913,22 +923,32 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   z-index: 1060;
 }
 .lg-outer .lg-image {
-  display: block;
+  display: block !important;
   vertical-align: middle;
   width: auto !important;
   height: auto !important;
-  margin: auto;
-  object-fit: contain;
+  margin: auto !important;
+  object-fit: contain !important;
   opacity: 1 !important;
+  max-width: 90vw;
+  max-height: 90vh;
 }
 
-/* في وضع SLIDE، عرض الصور بحجمها الطبيعي */
+/* في وضع SLIDE، عرض الصور في الوسط مع التحجيم المناسب */
 .lg-outer.lg-slide .lg-image,
 .lg-outer.lg-slide .lg-object {
-  max-width: none !important;
-  max-height: none !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
   width: auto !important;
   height: auto !important;
+  object-fit: contain !important;
+  margin: auto !important;
+  display: block !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  transform: none !important;
 }
 
 /* تأكد من ظهور الصورة الحالية مباشرة */
@@ -1057,29 +1077,45 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   transition: left 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.1s ease 0s;
 }
 
-/* قواعد خاصة لوضع SLIDE لعرض الصور بحجمها الطبيعي */
+/* قواعد خاصة لوضع SLIDE لعرض الصور في الوسط مع التحجيم المناسب */
 .lg-outer.lg-slide .lg-item.lg-current .lg-image,
 .lg-outer.lg-slide .lg-item.lg-current .lg-object {
-  max-width: none !important;
-  max-height: none !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
   width: auto !important;
   height: auto !important;
+  object-fit: contain !important;
   -webkit-transform: scale(1) !important;
   transform: scale(1) !important;
+  margin: auto !important;
+  display: block !important;
 }
 
 /* السماح للحاوية بالتمرير للصور الكبيرة */
 .lg-outer.lg-slide .lg {
   overflow: auto !important;
-}
-
-.lg-outer.lg-slide .lg-img-wrap {
-  overflow: auto !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-width: 100%;
-  min-height: 100%;
+}
+
+/* توسيط العناصر في lg-inner عند فتح الصورة مباشرة */
+.lg-outer.lg-slide .lg-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap;
+}
+
+.lg-outer.lg-slide .lg-img-wrap {
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+  padding: 0 !important;
 }
 
 /* قواعد إضافية لضمان ظهور الصور مباشرة بدون انتظار التكبير */
@@ -1088,6 +1124,7 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
+  object-fit: contain !important;
 }
 
 .lg-outer .lg-item.lg-current .lg-object,
@@ -1097,6 +1134,36 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   display: block !important;
   -webkit-transform: scale(1) !important;
   transform: scale(1) !important;
+  object-fit: contain !important;
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  margin: auto !important;
+  position: relative !important;
+}
+
+/* ضمان أن الصور في وضع slide تظهر في الوسط */
+.lg-outer.lg-slide .lg-object {
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  object-fit: contain !important;
+  margin: auto !important;
+  display: block !important;
+  position: relative !important;
+}
+
+/* قواعد إضافية لضمان التوسيط الكامل */
+.lg-outer .lg-item {
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.lg-outer.lg-slide .lg-item {
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 /*# sourceMappingURL=lightgallery.css.map */

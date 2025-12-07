@@ -212,17 +212,97 @@
 
     <script>
         $(document).ready(function() {
-            $('#lightgallery').lightGallery({
+            var gallery = $('#lightgallery');
+            
+            // التحقق من وجود hash في الرابط
+            var hash = window.location.hash;
+            var startIndex = null;
+            var shouldOpen = false;
+            
+            // تحليل hash parameters
+            if (hash && hash.indexOf('lg=') !== -1) {
+                shouldOpen = true;
+                var hashString = hash.substring(1); // إزالة #
+                var params = {};
+                
+                hashString.split('&').forEach(function(param) {
+                    var parts = param.split('=');
+                    if (parts.length === 2) {
+                        params[parts[0]] = parts[1];
+                    }
+                });
+                
+                if (params.slide !== undefined) {
+                    startIndex = parseInt(params.slide);
+                    if (isNaN(startIndex) || startIndex < 0) {
+                        startIndex = 0;
+                    }
+                } else {
+                    startIndex = 0;
+                }
+            }
+            
+            gallery.lightGallery({
                 mode: 'lg-slide',
                 startClass: '',
-                showAfterLoad: false,
+                showAfterLoad: true,
                 enableSwipe: true,
                 enableDrag: true,
                 speed: 400,
                 hideBarsDelay: 6000,
                 zoom: false,
                 actualSize: false,
-                scale: 1
+                scale: 1,
+                hash: true,
+                galleryId: 'lightgallery',
+                selector: '.item'
+            });
+            
+            // إذا كان هناك hash عند تحميل الصفحة، افتح المعرض تلقائياً
+            if (shouldOpen && startIndex !== null) {
+                // انتظار تحميل جميع الصور أولاً
+                var checkInterval = setInterval(function() {
+                    var instance = gallery.data('lightGallery');
+                    if (instance && instance.$items && instance.$items.length > 0) {
+                        clearInterval(checkInterval);
+                        if (startIndex >= 0 && startIndex < instance.$items.length) {
+                            instance.openGallery(startIndex);
+                            
+                            // بعد فتح المعرض، تأكد من توسيط الصورة
+                            setTimeout(function() {
+                                $('.lg-outer.lg-slide .lg-inner').css({
+                                    'display': 'flex',
+                                    'align-items': 'center',
+                                    'justify-content': 'center'
+                                });
+                                $('.lg-outer.lg-slide .lg').css({
+                                    'display': 'flex',
+                                    'align-items': 'center',
+                                    'justify-content': 'center'
+                                });
+                            }, 100);
+                        }
+                    }
+                }, 100);
+                
+                // timeout بعد 3 ثواني كحد أقصى
+                setTimeout(function() {
+                    clearInterval(checkInterval);
+                }, 3000);
+            }
+            
+            // عند تغيير الصورة، تأكد من التوسيط
+            $(document).on('onAfterSlide.lg', function(event, prevIndex, index) {
+                $('.lg-outer.lg-slide .lg-inner').css({
+                    'display': 'flex',
+                    'align-items': 'center',
+                    'justify-content': 'center'
+                });
+                $('.lg-outer.lg-slide .lg').css({
+                    'display': 'flex',
+                    'align-items': 'center',
+                    'justify-content': 'center'
+                });
             });
         });
     </script>
