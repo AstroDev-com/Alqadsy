@@ -1,13 +1,5 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <!-- SEO-Friendly Header Section -->
-    <div class="row mb-5">
-        <div class="col-12 text-center" data-aos="fade-up">
-            <p class="lead">مرحباً بكم في  - <strong>ورشة القدسي </strong>. نحن متخصصون في جميع أعمال الحديد والأعمال المعدنية بأعلى جودة وأفضل الأسعار.</p>
-
-        </div>
-    </div>
-
     <div class="row">
 
         @foreach ($categories as $info)

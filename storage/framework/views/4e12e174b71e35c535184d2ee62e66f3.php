@@ -35,7 +35,7 @@
             <p class="mb-4">لوريم إيبسوم هو نص شكلي يُستخدم في صناعة الطباعة والتنضيد. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر.</p>
             <p>
               <a href="#" class="pl-3 pr-3"><span class="icon-whatsapp"></span></a>
-              <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+              <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
             </p>
           </div>
           <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
@@ -44,7 +44,7 @@
             <p class="mb-4">لوريم إيبسوم هو نص شكلي يُستخدم في صناعة الطباعة والتنضيد. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر.</p>
             <p>
               <a href="#" class="pl-3 pr-3"><span class="icon-whatsapp"></span></a>
-              <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+              <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
             </p>
           </div>
           <div class="col-md-6 col-lg-6 col-xl-4 text-center mb-5">
@@ -53,7 +53,7 @@
             <p class="mb-4">لوريم إيبسوم هو نص شكلي يُستخدم في صناعة الطباعة والتنضيد. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر.</p>
             <p>
               <a href="#" class="pl-3 pr-3"><span class="icon-whatsapp"></span></a>
-              <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+              <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
             </p>
           </div>
         </div>

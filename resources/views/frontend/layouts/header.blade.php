@@ -4,8 +4,8 @@
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2" data-aos="fade-down">
-           <a href="{{ url('/') }}">
-              <img src="{{ asset('frontend/images/Alqadsy.png') }}" alt="ورشة القدسي" style="max-width: 90px; height: auto; border-radius: 50%;" />
+            <a href="{{ url('/') }}">
+              <img src="{{ asset('frontend/images/WhatsApp Image 2025-07-11 at 22.38.22_43442221.jpg') }}" alt="ورشة القدسي" style="max-width: 90px; height: auto; border-radius: 50%;" />
             </a>
           </div>
           <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">

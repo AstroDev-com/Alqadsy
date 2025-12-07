@@ -28,20 +28,10 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        // Build validation rules conditionally based on fileinfo availability
-        $imageRules = ['nullable', 'max:15360'];
-        if (function_exists('finfo_open')) {
-            $imageRules[] = 'image';
-            $imageRules[] = 'mimes:jpeg,png,jpg,gif,svg,webp';
-        } else {
-            // Fallback: validate file extension and size only
-            $imageRules[] = 'file';
-        }
-
         $request->validate([
             'name' => 'required|unique:products',
             'description' => 'nullable',
-            'image' => $imageRules,
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:15360',
             'status' => 'required|in:1,0',
             'category_id' => 'required|exists:categories,id',
         ]);
@@ -60,28 +50,9 @@ class ProductController extends Controller
             }
             // تحقق من نوع الصورة المدعوم
             $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-            $allowedExtensions = ['jpeg', 'jpg', 'png', 'gif', 'webp', 'svg'];
-
-            // استخدام MIME type من getimagesize أو getMimeType كبديل
-            $mimeType = $imageInfo['mime'] ?? null;
-            if (!$mimeType && function_exists('finfo_open')) {
-                try {
-                    $mimeType = $image->getMimeType();
-                } catch (\Exception $e) {
-                    $mimeType = $image->getClientMimeType();
-                }
-            } elseif (!$mimeType) {
-                $mimeType = $image->getClientMimeType();
-            }
-
-            // Validate by MIME type if available, otherwise by extension
-            $extension = strtolower($image->getClientOriginalExtension());
-            if ($mimeType && !in_array($mimeType, $allowedTypes)) {
-                return redirect()->back()->withErrors(['image' => 'نوع الصورة غير مدعوم.']);
-            } elseif (!$mimeType && !in_array($extension, $allowedExtensions)) {
+            if (!in_array($image->getMimeType(), $allowedTypes)) {
                 return redirect()->back()->withErrors(['image' => 'نوع الصورة غير مدعوم.']);
             }
-
             $filename = Str::slug($request->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image->getRealPath());
@@ -89,35 +60,19 @@ class ProductController extends Controller
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
-            // إضافة العلامة المائية (صورة + رقم) في منتصف الصورة
-            $watermarkImagePath = public_path('frontend/images/Alqadsybold.jpg');
-            if (file_exists($watermarkImagePath)) {
-                $watermarkImg = $manager->read($watermarkImagePath);
-                // ضبط حجم العلامة المائية إلى 90×127 بكسل
-                $watermarkWidth = 150;
-                $watermarkHeight = 150;
-                $watermarkImg->resize($watermarkWidth, $watermarkHeight, function ($constraint) {
-                    $constraint->upsize();
-                });
-
-                // حساب الموضع المركزي للصورة
-                $watermarkX = (int)(($img->width() - $watermarkImg->width()) / 2);
-                $watermarkY = (int)(($img->height() - $watermarkImg->height()) / 2);
-
-                // وضع الصورة في الوسط
-                $img->place($watermarkImg, 'top-left', $watermarkX, $watermarkY);
-
-                // إضافة النص (الرقم) تحت الصورة بمسافة
-                $phoneText = 'Tel: 771177763';
-                $textY = $watermarkY + $watermarkImg->height() + 20; // 20 بكسل مسافة
-                $img->text($phoneText, $img->width() / 2, $textY, function ($font) {
-                    $font->file(public_path('fonts/Amiri-Regular.ttf'));
-                    $font->size(36);
-                    $font->color('#ffffff');
-                    $font->align('center');
-                    $font->valign('top');
-                    $font->angle(0);
-                });
+            // إضافة العلامة المائية النصية أسفل منتصف الصورة
+            $text = ' يس دقلا ةشرو, Tel: 771177763';
+            $img->text($text, $img->width() / 2, $img->height() - 300, function ($font) {
+                $font->file(public_path('fonts/Amiri-Regular.ttf'));
+                $font->size(36);
+                $font->color('#ffffff');
+                $font->align('center');
+                $font->valign('bottom');
+                $font->angle(0);
+            });
+            $watermarkPath = public_path('watermark.png');
+            if (file_exists($watermarkPath)) {
+                $img->place($watermarkPath, 'bottom-right', 10, 10);
             }
             $publicPath = public_path('images/products');
             if (!file_exists($publicPath)) {
@@ -150,20 +105,10 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-        // Build validation rules conditionally based on fileinfo availability
-        $imageRules = ['nullable', 'max:15360'];
-        if (function_exists('finfo_open')) {
-            $imageRules[] = 'image';
-            $imageRules[] = 'mimes:jpeg,png,jpg,gif,svg,webp';
-        } else {
-            // Fallback: validate file extension and size only
-            $imageRules[] = 'file';
-        }
-
         $request->validate([
             'name' => 'required|unique:products,name,' . $product->id,
             'description' => 'nullable',
-            'image' => $imageRules,
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:15360',
             'status' => 'required|in:1,0',
             'category_id' => 'required|exists:categories,id',
         ]);
@@ -185,28 +130,9 @@ class ProductController extends Controller
             }
             // تحقق من نوع الصورة المدعوم
             $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-            $allowedExtensions = ['jpeg', 'jpg', 'png', 'gif', 'webp', 'svg'];
-
-            // استخدام MIME type من getimagesize أو getMimeType كبديل
-            $mimeType = $imageInfo['mime'] ?? null;
-            if (!$mimeType && function_exists('finfo_open')) {
-                try {
-                    $mimeType = $image->getMimeType();
-                } catch (\Exception $e) {
-                    $mimeType = $image->getClientMimeType();
-                }
-            } elseif (!$mimeType) {
-                $mimeType = $image->getClientMimeType();
-            }
-
-            // Validate by MIME type if available, otherwise by extension
-            $extension = strtolower($image->getClientOriginalExtension());
-            if ($mimeType && !in_array($mimeType, $allowedTypes)) {
-                return redirect()->back()->withErrors(['image' => 'نوع الصورة غير مدعوم.']);
-            } elseif (!$mimeType && !in_array($extension, $allowedExtensions)) {
+            if (!in_array($image->getMimeType(), $allowedTypes)) {
                 return redirect()->back()->withErrors(['image' => 'نوع الصورة غير مدعوم.']);
             }
-
             $filename = Str::slug($request->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image->getRealPath());
@@ -214,35 +140,19 @@ class ProductController extends Controller
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
-            // إضافة العلامة المائية (صورة + رقم) في منتصف الصورة
-            $watermarkImagePath = public_path('frontend/images/Alqadsybold.jpg');
-            if (file_exists($watermarkImagePath)) {
-                $watermarkImg = $manager->read($watermarkImagePath);
-                // ضبط حجم العلامة المائية إلى 90×127 بكسل
-                $watermarkWidth = 90;
-                $watermarkHeight = 127;
-                $watermarkImg->resize($watermarkWidth, $watermarkHeight, function ($constraint) {
-                    $constraint->upsize();
-                });
-
-                // حساب الموضع المركزي للصورة
-                $watermarkX = (int)(($img->width() - $watermarkImg->width()) / 2);
-                $watermarkY = (int)(($img->height() - $watermarkImg->height()) / 2);
-
-                // وضع الصورة في الوسط
-                $img->place($watermarkImg, 'top-left', $watermarkX, $watermarkY);
-
-                // إضافة النص (الرقم) تحت الصورة بمسافة
-                $phoneText = 'Tel: 771177763';
-                $textY = $watermarkY + $watermarkImg->height() + 20; // 20 بكسل مسافة
-                $img->text($phoneText, $img->width() / 2, $textY, function ($font) {
-                    $font->file(public_path('fonts/Amiri-Regular.ttf'));
-                    $font->size(36);
-                    $font->color('#ffffff');
-                    $font->align('center');
-                    $font->valign('top');
-                    $font->angle(0);
-                });
+            // إضافة العلامة المائية النصية أسفل منتصف الصورة
+            $text = 'Al-Qadasi Workshop, Tel: 771177763';
+            $img->text($text, $img->width() / 2, $img->height() - 20, function ($font) {
+                $font->file(public_path('fonts/Amiri-Regular.ttf'));
+                $font->size(36);
+                $font->color('#ffffff');
+                $font->align('center');
+                $font->valign('bottom');
+                $font->angle(0);
+            });
+            $watermarkPath = public_path('watermark.png');
+            if (file_exists($watermarkPath)) {
+                $img->place($watermarkPath, 'bottom-right', 10, 10);
             }
             $publicPath = public_path('images/products');
             if (!file_exists($publicPath)) {

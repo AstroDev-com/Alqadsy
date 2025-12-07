@@ -4,7 +4,9 @@
         <div class="row align-items-center">
 
           <div class="col-6 col-xl-2" data-aos="fade-down">
-            <h1 class="mb-0"><a href="<?php echo e(url('/')); ?>" class="text-white h2 mb-0">ورشة القدسي</a></h1>
+            <a href="<?php echo e(url('/')); ?>">
+              <img src="<?php echo e(asset('frontend/images/WhatsApp Image 2025-07-11 at 22.38.22_43442221.jpg')); ?>" alt="ورشة القدسي" style="max-width: 90px; height: auto; border-radius: 50%;" />
+            </a>
           </div>
           <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
             <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
@@ -23,10 +25,10 @@
             <div class="d-none d-xl-inline-block">
               <ul class="site-menu js-clone-nav mr-auto list-unstyled d-flex text-left mb-0" data-class="social">
                 <li>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-whatsapp"></span></a>
+                  <a href="https://wa.me/967771839780" target="_blank" class="pl-3 pr-3"><span class="icon-whatsapp"></span></a>
                 </li>
                 <li>
-                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                  <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
                 </li>
               </ul>
             </div>

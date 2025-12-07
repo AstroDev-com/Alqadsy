@@ -1,15 +1,2 @@
 User-agent: *
-Allow: /
-
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-# Note: Add your sitemap URL here when available
-# Sitemap: https://yourdomain.com/sitemap.xml
+Disallow:

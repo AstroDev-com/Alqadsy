@@ -27,36 +27,36 @@
     <link rel="stylesheet" href="{{ asset('admin/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <style>
         :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --card-bg: #1a1a1a;
-            --card-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
-                -5px -5px 10px rgba(26, 26, 26, 0.8);
-            --card-hover-shadow: 7px 7px 15px rgba(0, 0, 0, 0.4),
-                -7px -7px 15px rgba(26, 26, 26, 0.9);
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --card-shadow: 5px 5px 10px rgba(0, 0, 0, 0.05),
+                -5px -5px 10px rgba(255, 255, 255, 0.8);
+            --card-hover-shadow: 7px 7px 15px rgba(0, 0, 0, 0.08),
+                -7px -7px 15px rgba(255, 255, 255, 0.9);
             --sidebar-bg: #2c3e50;
             --sidebar-hover-bg: rgba(255, 255, 255, 0.1);
             --sidebar-text: #ffffff;
             --sidebar-icon: #ffffff;
             --sidebar-border: rgba(255, 255, 255, 0.1);
-            --header-bg: #1a1a1a;
-            --border-color: #404040;
+            --header-bg: #ffffff;
+            --border-color: #e2e8f0;
         }
 
         [data-theme="dark"] {
-            --bg-color: #000000;
+            --bg-color: #1a1a1a;
             --text-color: #ffffff;
-            --card-bg: #1a1a1a;
-            --card-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
-                -5px -5px 10px rgba(26, 26, 26, 0.8);
-            --card-hover-shadow: 7px 7px 15px rgba(0, 0, 0, 0.4),
-                -7px -7px 15px rgba(26, 26, 26, 0.9);
+            --card-bg: #2d2d2d;
+            --card-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+                -5px -5px 10px rgba(45, 45, 45, 0.8);
+            --card-hover-shadow: 7px 7px 15px rgba(0, 0, 0, 0.3),
+                -7px -7px 15px rgba(45, 45, 45, 0.9);
             --sidebar-bg: #1a1a1a;
             --sidebar-hover-bg: rgba(255, 255, 255, 0.05);
             --sidebar-text: #ffffff;
             --sidebar-icon: #ffffff;
             --sidebar-border: rgba(255, 255, 255, 0.05);
-            --header-bg: #1a1a1a;
+            --header-bg: #2d2d2d;
             --border-color: #404040;
         }
 

@@ -12,10 +12,10 @@
         --warning: #ffd740;
         --danger: #ff5252;
 
-            /* الألوان المحايدة */
-    --light: #000000;
-    --dark: #ffffff;
-    --gray: #404040;
+        /* الألوان المحايدة */
+        --light: #fafafa;
+        /* --dark: #424242; */
+        --gray: #e0e0e0;
 
         /* الظلال */
         --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -34,12 +34,12 @@
 
     /* Dark Mode Variables */
     [data-theme="dark"] {
-        --light: #000000;
-        --dark: #ffffff;
-        --gray: #404040;
+        --light: #1a1a1a;
+        --dark: #e0e0e0;
+        --gray: #2d2d2d;
 
-        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-        --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+        --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+        --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     /* التنسيقات الأساسية */
