@@ -88,6 +88,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/gallery-fix.css') }}">
 
     <!-- Schema.org Structured Data for LocalBusiness -->
     <script type="application/ld+json">
@@ -209,7 +210,28 @@
 
     <script>
         $(document).ready(function() {
+<<<<<<< Updated upstream
             $('#lightgallery').lightGallery();
+=======
+            $('#lightgallery').lightGallery({
+                selector: 'a',
+                mode: 'lg-slide',
+                speed: 400,
+                enableSwipe: true,
+                enableDrag: true,
+                hideBarsDelay: 6000,
+                thumbnail: true,
+                showThumbByDefault: true,
+                zoom: false,
+                actualSize: false,
+                showAfterLoad: true,
+                loop: true,
+                closable: true,
+                escKey: true,
+                keyPress: true,
+                controls: true
+            });
+>>>>>>> Stashed changes
         });
     </script>
 

@@ -899,6 +899,13 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   right: 0;
   top: 0;
   bottom: 0;
+<<<<<<< Updated upstream
+=======
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+>>>>>>> Stashed changes
 }
 .lg-outer .lg-item.lg-complete {
   background-image: none;
@@ -913,6 +920,43 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   max-height: 100%;
   width: auto !important;
   height: auto !important;
+<<<<<<< Updated upstream
+=======
+  margin: auto;
+  object-fit: contain;
+  opacity: 1 !important;
+}
+
+/* في وضع SLIDE، عرض الصور بحجمها الطبيعي ومتوسطة */
+.lg-outer.lg-slide .lg-image,
+.lg-outer.lg-slide .lg-object {
+  max-width: 90vw !important;
+  max-height: 90vh !important;
+  width: auto !important;
+  height: auto !important;
+  margin: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+}
+
+/* تأكد من ظهور الصورة الحالية مباشرة */
+.lg-outer .lg-item.lg-current .lg-object,
+.lg-outer .lg-item.lg-current .lg-image {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* ضمان ظهور جميع الصور المحملة */
+.lg-outer .lg-item.lg-complete .lg-object,
+.lg-outer .lg-item.lg-complete .lg-image {
+  opacity: 1 !important;
+>>>>>>> Stashed changes
 }
 .lg-outer.lg-show-after-load .lg-item .lg-object, .lg-outer.lg-show-after-load .lg-item .lg-video-play {
   opacity: 0;
@@ -1019,4 +1063,143 @@ body.day-mode .lg-outer .lg-dropdown .lg-icon {
   transition: left 1s cubic-bezier(0, 0, 0.25, 1) 0s, opacity 0.1s ease 0s;
 }
 
+<<<<<<< Updated upstream
+=======
+/* قواعد خاصة لوضع SLIDE لعرض الصور بحجمها الطبيعي */
+.lg-outer.lg-slide .lg-item.lg-current .lg-image,
+.lg-outer.lg-slide .lg-item.lg-current .lg-object {
+  max-width: none !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+  -webkit-transform: scale(1) !important;
+  transform: scale(1) !important;
+}
+
+/* السماح للحاوية بالتمرير للصور الكبيرة */
+.lg-outer.lg-slide .lg {
+  overflow: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.lg-outer.lg-slide .lg-img-wrap {
+  overflow: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 100%;
+  min-height: 100%;
+  text-align: center !important;
+}
+
+/* توسيط الصور في الوسط */
+.lg-outer.lg-slide .lg-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.lg-outer.lg-slide .lg-item .lg-image-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+}
+
+/* قواعد إضافية لضمان ظهور الصور مباشرة بدون انتظار التكبير */
+.lg-outer .lg-object,
+.lg-outer img.lg-object {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.lg-outer .lg-item.lg-current .lg-object,
+.lg-outer .lg-item.lg-current img.lg-object {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  -webkit-transform: scale(1) !important;
+  transform: scale(1) !important;
+}
+
+/* إصلاح مشكلة عدم ظهور الصور في وضع السلايد */
+.lg-outer.lg-slide .lg-item .lg-object,
+.lg-outer.lg-slide .lg-item .lg-image {
+  display: block !important;
+  visibility: visible !important;
+  margin: 0 auto !important;
+}
+
+.lg-outer.lg-slide .lg-item.lg-current .lg-object,
+.lg-outer.lg-slide .lg-item.lg-current .lg-image {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  margin: 0 auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+}
+
+.lg-outer.lg-slide .lg-item.lg-complete .lg-object,
+.lg-outer.lg-slide .lg-item.lg-complete .lg-image {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin: 0 auto !important;
+}
+
+/* توسيط الصور في المنتصف بشكل كامل */
+.lg-outer.lg-slide .lg-item.lg-current {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.lg-outer.lg-slide .lg-item.lg-current .lg-image-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+.lg-outer.lg-slide .lg-item.lg-current .lg-object,
+.lg-outer.lg-slide .lg-item.lg-current .lg-image {
+  max-width: 100% !important;
+  max-height: 100vh !important;
+  width: auto !important;
+  height: auto !important;
+  margin: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+  position: relative !important;
+}
+
+/* توسيط الحاوية الرئيسية */
+.lg-outer.lg-slide .lg-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.lg-outer.lg-slide .lg-outer .lg {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+>>>>>>> Stashed changes
 /*# sourceMappingURL=lightgallery.css.map */
