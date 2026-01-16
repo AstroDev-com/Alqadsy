@@ -149,7 +149,7 @@
         <div class="row justify-content-center align-items-center vh-100 my-5">
             <div class="col-md-6 col-lg-5 col-xl-4">
                 <div class="text-center mb-4">
-                    <img src="{{ asset('frontend/images/Alqadsy.png') }}" alt="Logo" class="img-fluid" style="max-width: 100px;">
+                    <img src="{{ asset('admin/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 100px;">
                 </div>
 
                 <div class="card shadow rounded-3">

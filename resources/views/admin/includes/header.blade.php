@@ -326,7 +326,7 @@
         <div class="dropdown">
             <div class="user-menu" data-bs-toggle="dropdown">
                 @if (Auth::check())
-                    <img src="{{ asset('frontend/images/Alqadsy.png') }}" alt="User" class="user-avatar">
+                    <img src="{{ asset('admin/logo.png') }}" alt="User" class="user-avatar">
                     <div class="d-none d-md-block">
                         <div class="fw-bold">{{ Auth::user()->name }}</div>
                         <div class="small text-muted">

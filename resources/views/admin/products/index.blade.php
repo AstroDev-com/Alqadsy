@@ -84,7 +84,7 @@
     </style>
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
-            <h1 class="fw-bold mb-2" style="font-size:2rem;">{{ __('dashboard.products') }}</h1>
+            <h1 class="fw-bold mb-2"  style="font-size:2rem;">{{ __('dashboard.products') }}</h1>
             <a href="{{ route('admin.products.create') }}" class="btn btn-success shadow mb-2" data-bs-toggle="tooltip"
                 title="{{ __('dashboard.create_product') }}">
                 <i class="fa fa-plus"></i> {{ __('dashboard.create_product') }}

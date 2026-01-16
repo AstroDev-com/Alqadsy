@@ -27,20 +27,18 @@
     <link rel="stylesheet" href="{{ asset('admin/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <style>
         :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --card-bg: #1a1a1a;
-            --card-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3),
-                -5px -5px 10px rgba(26, 26, 26, 0.8);
-            --card-hover-shadow: 7px 7px 15px rgba(0, 0, 0, 0.4),
-                -7px -7px 15px rgba(26, 26, 26, 0.9);
+            --bg-color: #f4f6f9;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --card-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            --card-hover-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
             --sidebar-bg: #2c3e50;
             --sidebar-hover-bg: rgba(255, 255, 255, 0.1);
             --sidebar-text: #ffffff;
             --sidebar-icon: #ffffff;
             --sidebar-border: rgba(255, 255, 255, 0.1);
-            --header-bg: #1a1a1a;
-            --border-color: #404040;
+            --header-bg: #ffffff;
+            --border-color: #dee2e6;
         }
 
         [data-theme="dark"] {

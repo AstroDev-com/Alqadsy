@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2025 at 02:59 PM
--- Server version: 10.4.32-MariaDB
+-- Generation Time: 16 يناير 2026 الساعة 22:33
+-- إصدار الخادم: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cache`
+-- بنية الجدول `cache`
 --
 
 CREATE TABLE `cache` (
@@ -36,7 +36,7 @@ CREATE TABLE `cache` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cache_locks`
+-- بنية الجدول `cache_locks`
 --
 
 CREATE TABLE `cache_locks` (
@@ -48,7 +48,7 @@ CREATE TABLE `cache_locks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- بنية الجدول `categories`
 --
 
 CREATE TABLE `categories` (
@@ -62,7 +62,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- إرجاع أو استيراد بيانات الجدول `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `image`, `status`, `created_at`, `updated_at`) VALUES
@@ -75,7 +75,7 @@ INSERT INTO `categories` (`id`, `name`, `description`, `image`, `status`, `creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `conversations`
+-- بنية الجدول `conversations`
 --
 
 CREATE TABLE `conversations` (
@@ -87,7 +87,7 @@ CREATE TABLE `conversations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `conversation_participants`
+-- بنية الجدول `conversation_participants`
 --
 
 CREATE TABLE `conversation_participants` (
@@ -101,7 +101,7 @@ CREATE TABLE `conversation_participants` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- بنية الجدول `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -117,7 +117,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jobs`
+-- بنية الجدول `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -133,7 +133,7 @@ CREATE TABLE `jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `job_batches`
+-- بنية الجدول `job_batches`
 --
 
 CREATE TABLE `job_batches` (
@@ -152,7 +152,7 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- بنية الجدول `messages`
 --
 
 CREATE TABLE `messages` (
@@ -174,7 +174,7 @@ CREATE TABLE `messages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- بنية الجدول `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -184,7 +184,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- إرجاع أو استيراد بيانات الجدول `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -204,7 +204,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `model_has_permissions`
+-- بنية الجدول `model_has_permissions`
 --
 
 CREATE TABLE `model_has_permissions` (
@@ -216,7 +216,7 @@ CREATE TABLE `model_has_permissions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `model_has_roles`
+-- بنية الجدول `model_has_roles`
 --
 
 CREATE TABLE `model_has_roles` (
@@ -226,18 +226,20 @@ CREATE TABLE `model_has_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `model_has_roles`
+-- إرجاع أو استيراد بيانات الجدول `model_has_roles`
 --
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'AppModelsUser', 1),
+(1, 'App\\Models\\User', 5),
+(1, 'App\\Models\\User', 6),
 (2, 'AppModelsUser', 2),
 (3, 'AppModelsUser', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifications`
+-- بنية الجدول `notifications`
 --
 
 CREATE TABLE `notifications` (
@@ -254,7 +256,7 @@ CREATE TABLE `notifications` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_reset_tokens`
+-- بنية الجدول `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
@@ -266,7 +268,7 @@ CREATE TABLE `password_reset_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissions`
+-- بنية الجدول `permissions`
 --
 
 CREATE TABLE `permissions` (
@@ -279,7 +281,7 @@ CREATE TABLE `permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `permissions`
+-- إرجاع أو استيراد بيانات الجدول `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `status`, `created_at`, `updated_at`) VALUES
@@ -312,7 +314,7 @@ INSERT INTO `permissions` (`id`, `name`, `guard_name`, `status`, `created_at`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- بنية الجدول `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -331,7 +333,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- بنية الجدول `products`
 --
 
 CREATE TABLE `products` (
@@ -346,7 +348,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- إرجاع أو استيراد بيانات الجدول `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `image`, `status`, `category_id`, `created_at`, `updated_at`) VALUES
@@ -362,7 +364,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `image`, `status`, `categor
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- بنية الجدول `roles`
 --
 
 CREATE TABLE `roles` (
@@ -375,7 +377,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `roles`
+-- إرجاع أو استيراد بيانات الجدول `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `status`, `created_at`, `updated_at`) VALUES
@@ -386,7 +388,7 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `status`, `created_at`, `update
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role_has_permissions`
+-- بنية الجدول `role_has_permissions`
 --
 
 CREATE TABLE `role_has_permissions` (
@@ -395,7 +397,7 @@ CREATE TABLE `role_has_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `role_has_permissions`
+-- إرجاع أو استيراد بيانات الجدول `role_has_permissions`
 --
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
@@ -448,7 +450,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sessions`
+-- بنية الجدول `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -461,18 +463,16 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `sessions`
+-- إرجاع أو استيراد بيانات الجدول `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('AR81BBEYJDshmbdF0TOGFvNeOnODViZtbTmaW63t', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 OPR/124.0.0.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiSEdkeVY5TXVCMmVlVG1kdDBkbE9ncTZIbUVtdjJGdUlLRkNHaWNaTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hci9wcm9kdWN0cyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czo2OiJsb2NhbGUiO3M6MjoiYXIiO3M6NToidGhlbWUiO3M6NDoiZGFyayI7fQ==', 1765115961),
-('FDkb70kVRATwnRTAv67QhPctKsHXSzknctgKbkiG', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 OPR/124.0.0.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNDBESlduUzB3dTBTbzZ5a3NidW1BaEk3R0JzTFJxeWZVVmlabW0yNiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzI6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXRlZ29yeS8xIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjY6ImxvY2FsZSI7czoyOiJhciI7czo1OiJ0aGVtZSI7czo1OiJsaWdodCI7fQ==', 1765046005),
-('I0pX65yvKXZAD4XFqQTwVROW2PIfv9Fik2KM7xJQ', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36 OPR/124.0.0.0', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoiOVhpQTRpZWFLY3d0NHg4ajRoY3FGSEpBMk5kYXJycFNKM0M5QkdzMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1765115912);
+('WzPmcreRBKXmDkiMbsy6z7AwEeBEJ21ECyQ4XsEA', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiNWwyNlhQclRBamx4UEhCZUVEYXB1R1BFUktTRFZtaDFEUHg5Y09DSCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hci9kYXNoYm9hcmQiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoibG9jYWxlIjtzOjI6ImFyIjtzOjU6InRoZW1lIjtzOjU6ImxpZ2h0Ijt9', 1768599162);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings`
+-- بنية الجدول `settings`
 --
 
 CREATE TABLE `settings` (
@@ -487,7 +487,7 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `settings`
+-- إرجاع أو استيراد بيانات الجدول `settings`
 --
 
 INSERT INTO `settings` (`id`, `key`, `value`, `group`, `type`, `description`, `created_at`, `updated_at`) VALUES
@@ -505,7 +505,7 @@ INSERT INTO `settings` (`id`, `key`, `value`, `group`, `type`, `description`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- بنية الجدول `users`
 --
 
 CREATE TABLE `users` (
@@ -526,14 +526,16 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- إرجاع أو استيراد بيانات الجدول `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `profile_image`, `thumbnail`, `status`, `role`, `phone_number`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'المدير العام', 'superadmin@gmail.com', NULL, '$2y$12$mMjIug5NnXHReyk7oH3hF.W36mnb7HgxFxTx4Uj9NS4GxyWNPyX1a', NULL, NULL, '1', NULL, NULL, NULL, '2025-07-07 15:04:19', '2025-07-07 15:04:19', NULL),
 (2, 'المدير', 'admin@gmail.com', NULL, '$2y$12$NBqoqOj32PFKI.iK7DWvo.DGfOF2sSGp2r0isJYXDbCtjsaBJlCTC', NULL, NULL, '1', NULL, NULL, NULL, '2025-07-07 15:04:19', '2025-07-07 15:04:19', NULL),
 (3, 'المستخدم', 'user@gmail.com', NULL, '$2y$12$.8SfekFZU60.RsXevPqwSezLrshQgwGBvvM4Hq45M0ud9JSQbABqK', NULL, NULL, '1', NULL, NULL, NULL, '2025-07-07 15:04:19', '2025-07-07 15:04:19', NULL),
-(4, 'adminxp', 'adminxp@gmail.com', NULL, '$2y$12$.yQJiExLXR4O/aSU81DtTuhYASq0is2QOVKEE/R8J7QLsJsZiczs2', NULL, NULL, '1', NULL, NULL, NULL, '2025-08-30 00:19:40', '2025-08-30 00:19:40', NULL);
+(4, 'adminxp', 'adminxp@gmail.com', NULL, '$2y$12$.yQJiExLXR4O/aSU81DtTuhYASq0is2QOVKEE/R8J7QLsJsZiczs2', NULL, NULL, '1', NULL, NULL, NULL, '2025-08-30 00:19:40', '2025-08-30 00:19:40', NULL),
+(5, 'عمار القدسي', 'amaralqadsy@gmail.com', NULL, '$2y$12$KYDDU8teYohwj14yeRgfg.YtNPZ08yyAv0NaH/g7KT2Cvq04GL8xW', 'user_default.webp', 'user_default_thumbnail.webp', '1', NULL, NULL, NULL, '2026-01-16 21:08:36', '2026-01-16 21:08:36', NULL),
+(6, 'علاء القدسي', 'alaaalqadsy@gmail.com', NULL, '$2y$12$aXZRMDL2coalMBOzzyWD5epel94hg0gizG0Jn2Qop.pMxNZRKBkKG', 'user_default.webp', 'user_default_thumbnail.webp', '1', NULL, NULL, NULL, '2026-01-16 21:10:01', '2026-01-16 21:10:01', NULL);
 
 --
 -- Indexes for dumped tables
@@ -748,7 +750,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -766,21 +768,21 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Constraints for dumped tables
+-- قيود الجداول المُلقاة.
 --
 
 --
--- Constraints for table `conversation_participants`
+-- قيود الجداول `conversation_participants`
 --
 ALTER TABLE `conversation_participants`
   ADD CONSTRAINT `conversation_participants_conversation_id_foreign` FOREIGN KEY (`conversation_id`) REFERENCES `conversations` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `conversation_participants_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `messages`
+-- قيود الجداول `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_conversation_id_foreign` FOREIGN KEY (`conversation_id`) REFERENCES `conversations` (`id`) ON DELETE CASCADE,
@@ -789,25 +791,25 @@ ALTER TABLE `messages`
   ADD CONSTRAINT `messages_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `model_has_permissions`
+-- قيود الجداول `model_has_permissions`
 --
 ALTER TABLE `model_has_permissions`
   ADD CONSTRAINT `model_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `model_has_roles`
+-- قيود الجداول `model_has_roles`
 --
 ALTER TABLE `model_has_roles`
   ADD CONSTRAINT `model_has_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `products`
+-- قيود الجداول `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `role_has_permissions`
+-- قيود الجداول `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
   ADD CONSTRAINT `role_has_permissions_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,

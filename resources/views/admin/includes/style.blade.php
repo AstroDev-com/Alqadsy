@@ -62,11 +62,11 @@
         margin-bottom: var(--spacing-md);
     }
 
-    p,
+    /* p,
     span,
     div {
         color: var(--dark);
-    }
+    } */
 
     /* تنسيقات البطاقات */
     .card {
