@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>" dir="rtl">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title>{{ config('app.name', 'Laravel') }} - {{ __('Login') }}</title>
+    <title><?php echo e(config('app.name', 'Laravel')); ?> - <?php echo e(__('Login')); ?></title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts & Styles -->
-    {{-- Ensure Bootstrap CSS/JS are loaded via Vite or CDN --}}
-    {{-- @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js']) --}}
+    
+    
 
-    {{-- Or if using Bootstrap CDN --}}
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    {{-- Include Font Awesome if needed for icons --}}
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    {{-- Custom Styles for Gradient Background --}}
+    
     <style>
         body {
             background: linear-gradient(to bottom right, #f8f9fa, #e9ecef);
@@ -149,67 +149,114 @@
         <div class="row justify-content-center align-items-center vh-100 my-5">
             <div class="col-md-6 col-lg-5 col-xl-4">
                 <div class="text-center mb-4">
-                    <img src="{{ asset('admin/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 100px;">
+                    <img src="<?php echo e(asset('admin/logo.png')); ?>" alt="Logo" class="img-fluid" style="max-width: 100px;">
                 </div>
 
                 <div class="card shadow rounded-3">
                     <div class="card-body pt-5 ps-5 pe-5 pb-4">
 
                         <!-- Session Status -->
-                        @if (session('status'))
+                        <?php if(session('status')): ?>
                             <div class="alert alert-success mb-4" role="alert">
-                                {{ session('status') }}
+                                <?php echo e(session('status')); ?>
+
                             </div>
-                        @endif
+                        <?php endif; ?>
 
-                        <form method="POST" action="{{ route('dashboard_control') }}">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('dashboard_control')); ?>">
+                            <?php echo csrf_field(); ?>
 
-                            <h5 class="card-title text-center mb-4 fw-bold">{{ __('تسجيل الدخول') }}</h5>
+                            <h5 class="card-title text-center mb-4 fw-bold"><?php echo e(__('تسجيل الدخول')); ?></h5>
 
                             <!-- Email Address -->
                             <div class="mb-3">
-                                <div class="input-group @error('email') has-validation @enderror">
+                                <div class="input-group <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> has-validation <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
                                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                     <input id="email"
-                                        class="form-control form-control-lg @error('email') is-invalid @enderror"
-                                        type="email" name="email" value="{{ old('email') }}" required autofocus
-                                        autocomplete="username" placeholder="{{ __('Email') }}" />
-                                    @error('email')
+                                        class="form-control form-control-lg <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                        type="email" name="email" value="<?php echo e(old('email')); ?>" required autofocus
+                                        autocomplete="username" placeholder="<?php echo e(__('Email')); ?>" />
+                                    <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                         <div class="invalid-feedback">
-                                            {{ $message }}
+                                            <?php echo e($message); ?>
+
                                         </div>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
 
                             <!-- Password -->
                             <div class="mb-3">
-                                <div class="input-group @error('password') has-validation @enderror">
+                                <div class="input-group <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> has-validation <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
                                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                     <input id="password"
-                                        class="form-control form-control-lg @error('password') is-invalid @enderror"
+                                        class="form-control form-control-lg <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
                                         type="password" name="password" required autocomplete="current-password"
-                                        placeholder="{{ __('Password') }}" />
-                                    @error('password')
+                                        placeholder="<?php echo e(__('Password')); ?>" />
+                                    <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                         <div class="invalid-feedback">
-                                            {{ $message }}
+                                            <?php echo e($message); ?>
+
                                         </div>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
 
                             <!-- Remember Me & Forgot Password Row -->
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                @if (Route::has('password.request'))
-                                    <a class="small text-decoration-none" href="{{ route('password.request') }}">
-                                        {{ __('dashboard.Forgot your password?') }}
+                                <?php if(Route::has('password.request')): ?>
+                                    <a class="small text-decoration-none" href="<?php echo e(route('password.request')); ?>">
+                                        <?php echo e(__('dashboard.Forgot your password?')); ?>
+
                                     </a>
-                                @endif
+                                <?php endif; ?>
                                 <div class="form-check">
                                     <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
                                     <label for="remember_me" class="form-check-label small">
-                                        {{ __('dashboard.Remember me') }}
+                                        <?php echo e(__('dashboard.Remember me')); ?>
+
                                     </label>
                                 </div>
                             </div>
@@ -217,23 +264,25 @@
                             <!-- Login Button -->
                             <div class="d-grid gap-2 mb-3">
                                 <button type="submit" class="btn btn-primary btn-lg">
-                                    {{ __('تسجيل الدخول') }}
+                                    <?php echo e(__('تسجيل الدخول')); ?>
+
                                 </button>
                             </div>
 
                         </form>
 
-                        {{-- Social Login (Optional) --}}
-                        {{-- You can place the social login buttons here if needed --}}
+                        
+                        
 
-                    </div> {{-- End card-body --}}
-                </div> {{-- End card --}}
-            </div> {{-- End col --}}
-        </div> {{-- End row --}}
-    </div> {{-- End container --}}
+                    </div> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
 
-    {{-- Include Bootstrap JS if needed (e.g., for dropdowns, modals) --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
+    
+    
 </body>
 
 </html>
+<?php /**PATH D:\All My Project\GitHub_Project\AstroDev GitHub\Alqadsy\Alqadsy_lastupdate\Alqadsy\resources\views/auth/login.blade.php ENDPATH**/ ?>

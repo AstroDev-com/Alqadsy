@@ -93,8 +93,8 @@ Route::group([
 require __DIR__ . '/auth.php';
 
 
-Route::get('login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
-Route::post('login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::get('dashboard_control', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('dashboard_control');
+Route::post('dashboard_control', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 Route::post('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', [homeController::class, 'Index'])->name('home');

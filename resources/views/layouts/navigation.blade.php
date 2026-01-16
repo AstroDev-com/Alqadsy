@@ -21,7 +21,8 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Language Switcher -->
-                <div class="me-4">
+                <!-- Language Switcher -->
+                {{-- <div class="me-4">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
@@ -46,7 +47,7 @@
                             @endforeach
                         </x-slot>
                     </x-dropdown>
-                </div>
+                </div> --}}
 
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
@@ -117,7 +118,8 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Language Switcher for Mobile -->
-                <div class="px-4 py-2">
+                <!-- Language Switcher for Mobile -->
+                {{-- <div class="px-4 py-2">
                     <div class="text-sm text-gray-500">Language</div>
                     <div class="mt-2 space-y-1">
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
@@ -126,7 +128,7 @@
                             </x-responsive-nav-link>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
 
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}

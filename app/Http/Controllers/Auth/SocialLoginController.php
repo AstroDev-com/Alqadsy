@@ -34,7 +34,7 @@ class SocialLoginController extends Controller
             Auth::login($user);
             return redirect()->intended(route('dashboard'));
         } catch (\Exception $e) {
-            return redirect()->route('login')->with('error', 'حدث خطأ أثناء تسجيل الدخول عبر Google');
+            return redirect()->route('dashboard_control')->with('error', 'حدث خطأ أثناء تسجيل الدخول عبر Google');
         }
     }
 
@@ -63,7 +63,7 @@ class SocialLoginController extends Controller
             Auth::login($user);
             return redirect()->intended(route('dashboard'));
         } catch (\Exception $e) {
-            return redirect()->route('login')->with('error', 'حدث خطأ أثناء تسجيل الدخول عبر Facebook');
+            return redirect()->route('dashboard_control')->with('error', 'حدث خطأ أثناء تسجيل الدخول عبر Facebook');
         }
     }
 }
