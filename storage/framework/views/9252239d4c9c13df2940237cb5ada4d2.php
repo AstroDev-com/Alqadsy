@@ -1,7 +1,7 @@
 <aside class="sidebar no-print" style="color:light;">
     <div class="sidebar-brand">
         <a href="<?php echo e(route('dashboard')); ?>" class="logo-container">
-            <img src="<?php echo e(asset('admin/logo.png')); ?>" alt="Logo">
+            <img src="<?php echo e(asset('frontend/images/Alqadsy.png')); ?>" alt="Logo">
         </a>
     </div>
     <nav class="sidebar-menu">

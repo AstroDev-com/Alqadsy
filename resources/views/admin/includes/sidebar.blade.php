@@ -1,7 +1,7 @@
 <aside class="sidebar no-print" style="color:light;">
     <div class="sidebar-brand">
         <a href="{{ route('dashboard') }}" class="logo-container">
-            <img src="{{ asset('admin/logo.png') }}" alt="Logo">
+            <img src="{{ asset('frontend/images/Alqadsy.png') }}" alt="Logo">
         </a>
     </div>
     <nav class="sidebar-menu">
