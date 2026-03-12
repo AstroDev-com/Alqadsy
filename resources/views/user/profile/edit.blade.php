@@ -85,7 +85,7 @@
                                     <div class="profile-image-upload position-relative mx-auto mx-md-0"
                                         style="width: 150px; height: 150px;">
                                         <img id="profileImagePreview"
-                                            src="{{ $user->profile_image ? \Storage::url($user->profile_image) : asset('admin/assets/img/emp_default.png') }}"
+                                            src="{{ $user->profile_image ? \Illuminate\Support\Facades\Storage::url($user->profile_image) : asset('admin/assets/img/emp_default.png') }}"
                                             alt="Profile Image"
                                             class="rounded-circle {{ $user->profile_image ? 'border p-1 shadow-sm img-thumbnail' : '' }}"
                                             width="150" height="150" style="object-fit: cover;">
@@ -415,7 +415,7 @@
                 reader.readAsDataURL(input.files[0]);
             } else {
                 // Restore original if selection cancelled (optional)
-                // preview.src = "{{ $user->profile_image ? Storage::url($user->profile_image) : asset('admin/assets/img/emp_default.png') }}";
+                // preview.src = "{{ $user->profile_image ? \Illuminate\Support\Facades\Storage::url($user->profile_image) : asset('admin/assets/img/emp_default.png') }}";
             }
         }
     </script>
