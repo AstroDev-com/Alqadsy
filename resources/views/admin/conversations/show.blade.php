@@ -337,57 +337,59 @@
             {{-- Chat Messages --}}
             <div class="chat-messages" id="chat-messages">
                 @php $lastMessageDate = null; @endphp
-                @forelse ($messages as $message)
-                    @php
-                        $isOutgoing = $message->user_id === $currentUser->id;
-                        $currentMessageDate = $message->created_at->format('Y-m-d');
-                    @endphp
-
-                    @if ($currentMessageDate != $lastMessageDate)
-                        <div class="date-separator">
-                            <span>
-                                @if ($message->created_at->isToday())
-                                    {{ __('dashboard.today') }}
-                                @elseif ($message->created_at->isYesterday())
-                                    {{ __('dashboard.yesterday') }}
-                                @else
-                                    {{ $message->created_at->translatedFormat('l, j F Y') }}
-                                @endif
-                            </span>
-                        </div>
-                        @php $lastMessageDate = $currentMessageDate; @endphp
-                    @endif
-
-                    <div class="message-group">
-                        <div class="message {{ $isOutgoing ? 'outgoing' : 'incoming' }}">
-                            {{-- Show avatar for incoming messages --}}
-                            @unless ($isOutgoing)
-                                <img src="{{ $message->user->profile_image ? asset('storage/' . $message->user->profile_image) : asset('admin\assets\img/emp_default.png') }}"
-                                    class="message-avatar" alt="{{ $message->user->name }}">
-                            @endunless
-
-                            {{-- Show avatar for outgoing messages --}}
-                            @if ($isOutgoing)
-                                <img src="{{ $currentUser->profile_image ? asset('storage/' . $currentUser->profile_image) : asset('admin\assets\img/emp_default.png') }}"
-                                    class="message-avatar" alt="{{ $currentUser->name }}">
-                            @endif
-
-                            <div class="message-bubble">
-                                <div class="message-text">{!! nl2br(e($message->body)) !!}</div>
-                                <div class="message-time">
-                                    <span>{{ $message->created_at->format('g:i A') }}</span>
-                                    @if ($isOutgoing)
-                                        <i class="fas fa-check-double text-xs opacity-70"></i>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @empty
+                @if($messages->isEmpty())
                     <div class="text-center text-muted py-4">
                         {{ __('dashboard.no_messages_in_conversation') }}
                     </div>
-                @endforelse
+                @else
+                    @foreach ($messages as $message)
+                        @php
+                            $isOutgoing = $message->user_id === $currentUser->id;
+                            $currentMessageDate = $message->created_at->format('Y-m-d');
+                        @endphp
+
+                        @if ($currentMessageDate != $lastMessageDate)
+                            <div class="date-separator">
+                                <span>
+                                    @if ($message->created_at->isToday())
+                                        {{ __('dashboard.today') }}
+                                    @elseif ($message->created_at->isYesterday())
+                                        {{ __('dashboard.yesterday') }}
+                                    @else
+                                        {{ $message->created_at->translatedFormat('l, j F Y') }}
+                                    @endif
+                                </span>
+                            </div>
+                            @php $lastMessageDate = $currentMessageDate; @endphp
+                        @endif
+
+                        <div class="message-group">
+                            <div class="message {{ $isOutgoing ? 'outgoing' : 'incoming' }}">
+                                {{-- Show avatar for incoming messages --}}
+                                @unless ($isOutgoing)
+                                    <img src="{{ $message->user->profile_image ? asset('storage/' . $message->user->profile_image) : asset('admin\assets\img/emp_default.png') }}"
+                                        class="message-avatar" alt="{{ $message->user->name }}">
+                                @endunless
+
+                                {{-- Show avatar for outgoing messages --}}
+                                @if ($isOutgoing)
+                                    <img src="{{ $currentUser->profile_image ? asset('storage/' . $currentUser->profile_image) : asset('admin\assets\img/emp_default.png') }}"
+                                        class="message-avatar" alt="{{ $currentUser->name }}">
+                                @endif
+
+                                <div class="message-bubble">
+                                    <div class="message-text">{!! nl2br(e($message->body)) !!}</div>
+                                    <div class="message-time">
+                                        <span>{{ $message->created_at->format('g:i A') }}</span>
+                                        @if ($isOutgoing)
+                                            <i class="fas fa-check-double text-xs opacity-70"></i>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
 
             {{-- Message Input --}}

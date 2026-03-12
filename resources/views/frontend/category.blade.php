@@ -13,17 +13,19 @@
                 </div>
             </div>
             <div class="row" id="lightgallery">
-                @forelse($products as $product)
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="{{ asset($product->image ? $product->image : 'admin/assets/img/product_default.png') }}" data-sub-html="<h4>{{ $product->name }}</h4>">
-                        <a href="{{ route('frontend.product.show', $product->id) }}">
-                            <img src="{{ asset($product->image ? $product->image : 'admin/assets/img/product_default.png') }}" alt="{{ $product->name }}" class="img-fluid">
-                        </a>
-                    </div>
-                @empty
+                @if($products->isEmpty())
                     <div class="col-12 text-center">
                         <p>لا توجد منتجات في هذا التصنيف حالياً.</p>
                     </div>
-                @endforelse
+                @else
+                    @foreach($products as $product)
+                        <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="{{ asset($product->image ? $product->image : 'admin/assets/img/product_default.png') }}" data-sub-html="<h4>{{ $product->name }}</h4>">
+                            <a href="{{ route('frontend.product.show', $product->id) }}">
+                                <img src="{{ asset($product->image ? $product->image : 'admin/assets/img/product_default.png') }}" alt="{{ $product->name }}" class="img-fluid">
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

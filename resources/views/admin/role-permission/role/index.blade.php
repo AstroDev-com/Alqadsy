@@ -97,74 +97,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($roles as $role)
-                                        <tr class="role-row">
-                                            <td class="align-middle text-center">{{ $loop->iteration }}</td>
-                                            <td class="align-middle">
-                                                <div class="fw-bold">{{ $role->name }}</div>
-                                                <small class="text-muted">
-                                                    <i class="fas fa-clock me-1"></i>
-                                                    {{ $role->created_at->diffForHumans() }}
-                                                </small>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="badge bg-info">
-                                                    <i class="fas fa-users me-1"></i>
-                                                    {{ $role->users_count ?? 0 }}
-                                                </span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <div class="permissions-badges">
-                                                    @foreach ($role->permissions->take(3) as $permission)
-                                                        <span class="badge bg-primary bg-opacity-10 text-primary">
-                                                            <i class="fas fa-key me-1"></i>
-                                                            {{ $permission->name }}
-                                                        </span>
-                                                    @endforeach
-                                                    @if ($role->permissions->count() > 3)
-                                                        <span class="badge text-dark">
-                                                            +{{ $role->permissions->count() - 3 }}
-                                                        </span>
-                                                    @endif
-                                                </div>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span
-                                                    class="status-badge status-{{ $role->status ? 'active' : 'inactive' }}">
-                                                    <i
-                                                        class="fas fa-{{ $role->status ? 'check-circle' : 'times-circle' }} me-1"></i>
-                                                    {{ $role->status ? __('dashboard.active') : __('dashboard.inactive') }}
-                                                </span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <div class="btn-group actions-group">
-                                                    <a href="{{ route('roles.addPermissionsToRole', $role->id) }}"
-                                                        class="btn btn-info rounded-pill"
-                                                        title="{{ __('dashboard.view') }}">
-                                                        <i class="fas fa-key"></i> إضافة صلاحية إلى دور
-                                                    </a>
-                                                    <a href="{{ route('roles.show', $role->id) }}"
-                                                        class="btn-action btn-view" title="{{ __('dashboard.view') }}">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                    <a href="{{ route('roles.edit', $role->id) }}"
-                                                        class="btn-action btn-edit" title="{{ __('dashboard.edit') }}">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <form action="{{ route('roles.destroy', $role->id) }}" method="POST"
-                                                        class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-action btn-delete"
-                                                            title="{{ __('dashboard.delete') }}"
-                                                            onclick="return confirm('{{ __('dashboard.confirm_delete') }}')">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @empty
+                                    @if($roles->isEmpty())
                                         <tr>
                                             <td colspan="7" class="text-center py-5">
                                                 <div class="empty-state">
@@ -179,7 +112,76 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforelse
+                                    @else
+                                        @foreach ($roles as $role)
+                                            <tr class="role-row">
+                                                <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                                                <td class="align-middle">
+                                                    <div class="fw-bold">{{ $role->name }}</div>
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-clock me-1"></i>
+                                                        {{ $role->created_at->diffForHumans() }}
+                                                    </small>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="badge bg-info">
+                                                        <i class="fas fa-users me-1"></i>
+                                                        {{ $role->users_count ?? 0 }}
+                                                    </span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <div class="permissions-badges">
+                                                        @foreach ($role->permissions->take(3) as $permission)
+                                                            <span class="badge bg-primary bg-opacity-10 text-primary">
+                                                                <i class="fas fa-key me-1"></i>
+                                                                {{ $permission->name }}
+                                                            </span>
+                                                        @endforeach
+                                                        @if ($role->permissions->count() > 3)
+                                                            <span class="badge text-dark">
+                                                                +{{ $role->permissions->count() - 3 }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span
+                                                        class="status-badge status-{{ $role->status ? 'active' : 'inactive' }}">
+                                                        <i
+                                                            class="fas fa-{{ $role->status ? 'check-circle' : 'times-circle' }} me-1"></i>
+                                                        {{ $role->status ? __('dashboard.active') : __('dashboard.inactive') }}
+                                                    </span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <div class="btn-group actions-group">
+                                                        <a href="{{ route('roles.addPermissionsToRole', $role->id) }}"
+                                                            class="btn btn-info rounded-pill"
+                                                            title="{{ __('dashboard.view') }}">
+                                                            <i class="fas fa-key"></i> إضافة صلاحية إلى دور
+                                                        </a>
+                                                        <a href="{{ route('roles.show', $role->id) }}"
+                                                            class="btn-action btn-view" title="{{ __('dashboard.view') }}">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                        <a href="{{ route('roles.edit', $role->id) }}"
+                                                            class="btn-action btn-edit" title="{{ __('dashboard.edit') }}">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <form action="{{ route('roles.destroy', $role->id) }}" method="POST"
+                                                            class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn-action btn-delete"
+                                                                title="{{ __('dashboard.delete') }}"
+                                                                onclick="return confirm('{{ __('dashboard.confirm_delete') }}')">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

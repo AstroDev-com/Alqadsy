@@ -288,26 +288,28 @@
                     <hr class="dropdown-divider my-0">
                 </li>
 
-                @forelse($unreadNotificationsForLayout->take(7) as $notification)
-                    <li>
-                        <a class="dropdown-item d-flex align-items-start px-3 py-2 notification-item {{ $notification->read_at ? 'read' : 'unread' }}"
-                            href="{{ route('notifications.markAsRead', ['notification' => $notification->id, 'redirect_url' => $notification->data['url'] ?? url()->current()]) }}">
-                            <div class="{{ $isRTL ? 'ms-3' : 'me-3' }} pt-1 fs-5 text-center" style="width: 25px;">
-                                <i class="{{ $notification->data['icon'] ?? 'fas fa-info-circle' }}"></i>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="mb-0 small text-wrap">{!! $notification->data['message'] ?? __('dashboard.new_notification') !!}</p>
-                                <small
-                                    class="text-muted d-block">{{ $notification->created_at->diffForHumans() }}</small>
-                            </div>
-                        </a>
-                    </li>
-                @empty
+                @if($unreadNotificationsForLayout->isEmpty())
                     <li>
                         <p class="text-center text-muted small my-4 px-3">{{ __('dashboard.no_unread_notifications') }}
                         </p>
                     </li>
-                @endforelse
+                @else
+                    @foreach($unreadNotificationsForLayout->take(7) as $notification)
+                        <li>
+                            <a class="dropdown-item d-flex align-items-start px-3 py-2 notification-item {{ $notification->read_at ? 'read' : 'unread' }}"
+                                href="{{ route('notifications.markAsRead', ['notification' => $notification->id, 'redirect_url' => $notification->data['url'] ?? url()->current()]) }}">
+                                <div class="{{ $isRTL ? 'ms-3' : 'me-3' }} pt-1 fs-5 text-center" style="width: 25px;">
+                                    <i class="{{ $notification->data['icon'] ?? 'fas fa-info-circle' }}"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-0 small text-wrap">{!! $notification->data['message'] ?? __('dashboard.new_notification') !!}</p>
+                                    <small
+                                        class="text-muted d-block">{{ $notification->created_at->diffForHumans() }}</small>
+                                </div>
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
 
                 @if ($unreadNotificationsCountForLayout > 0)
                     <li>

@@ -85,7 +85,7 @@
                                     <div class="profile-image-upload position-relative mx-auto mx-md-0"
                                         style="width: 150px; height: 150px;">
                                         <img id="profileImagePreview"
-                                            src="{{ $user->profile_image ? Storage::url($user->profile_image) : asset('admin/assets/img/emp_default.png') }}"
+                                            src="{{ $user->profile_image ? \Storage::url($user->profile_image) : asset('admin/assets/img/emp_default.png') }}"
                                             alt="Profile Image"
                                             class="rounded-circle {{ $user->profile_image ? 'border p-1 shadow-sm img-thumbnail' : '' }}"
                                             width="150" height="150" style="object-fit: cover;">
@@ -139,18 +139,18 @@
                                     <label for="current_password"
                                         class="form-label">{{ __('dashboard.current_password') }}</label>
                                     <input id="current_password" name="current_password" type="password"
-                                        class="form-control @error('current_password', 'updatePassword') is-invalid @enderror"
+                                        class="form-control {{ $errors->updatePassword->has('current_password') ? 'is-invalid' : '' }}"
                                         autocomplete="current-password" required>
-                                    @error('current_password', 'updatePassword')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    @if($errors->updatePassword->has('current_password'))
+                                        <div class="invalid-feedback">{{ $errors->updatePassword->first('current_password') }}</div>
+                                    @endif
                                 </div>
 
                                 {{-- New Password --}}
                                 <div class="mb-3">
                                     <label for="password" class="form-label">{{ __('dashboard.new_password') }}</label>
                                     <input id="password" name="password" type="password"
-                                        class="form-control @error('password', 'updatePassword') is-invalid @enderror"
+                                        class="form-control {{ $errors->updatePassword->has('password') ? 'is-invalid' : '' }}"
                                         autocomplete="new-password" required>
                                     {{-- Password Strength Meter --}}
                                     <div class="progress mt-2" style="height: 5px;"
@@ -160,9 +160,9 @@
                                         </div>
                                     </div>
                                     <small id="passwordStrengthText" class="form-text text-muted"></small>
-                                    @error('password', 'updatePassword')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    @if($errors->updatePassword->has('password'))
+                                        <div class="invalid-feedback">{{ $errors->updatePassword->first('password') }}</div>
+                                    @endif
                                 </div>
 
                                 {{-- Confirm Password --}}
@@ -170,11 +170,11 @@
                                     <label for="password_confirmation"
                                         class="form-label">{{ __('dashboard.confirm_password') }}</label>
                                     <input id="password_confirmation" name="password_confirmation" type="password"
-                                        class="form-control @error('password_confirmation', 'updatePassword') is-invalid @enderror"
+                                        class="form-control {{ $errors->updatePassword->has('password_confirmation') ? 'is-invalid' : '' }}"
                                         autocomplete="new-password" required>
-                                    @error('password_confirmation', 'updatePassword')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    @if($errors->updatePassword->has('password_confirmation'))
+                                        <div class="invalid-feedback">{{ $errors->updatePassword->first('password_confirmation') }}</div>
+                                    @endif
                                 </div>
 
                                 <div class="d-flex justify-content-end">

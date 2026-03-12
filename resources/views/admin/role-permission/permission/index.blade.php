@@ -610,60 +610,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($permissions as $permission)
-                                        <tr class="permission-row">
-                                            <td class="align-middle text-center">{{ $loop->iteration }}</td>
-                                            <td class="align-middle">
-                                                <div class="fw-bold">{{ $permission->name }}</div>
-                                                <small class="text-muted">
-                                                    <i class="fas fa-clock me-1"></i>
-                                                    {{ $permission->created_at->diffForHumans() }}
-                                                </small>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span class="badge bg-info">
-                                                    <i class="fas fa-users me-1"></i>
-                                                    {{ $permission->roles_count ?? 0 }}
-                                                </span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <span
-                                                    class="status-badge status-{{ $permission->status ? 'active' : 'inactive' }}">
-                                                    <i
-                                                        class="fas {{ $permission->status ? 'fa-check-circle' : 'fa-times-circle' }} me-1"></i>
-                                                    {{ $permission->status ? __('dashboard.active') : __('dashboard.inactive') }}
-                                                </span>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <small class="text-muted">
-                                                    <i class="fas fa-calendar me-1"></i>
-                                                    {{ $permission->created_at->format('Y-m-d') }}
-                                                </small>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <div class="btn-group actions-group">
-                                                    <a href="{{ route('permissions.show', $permission->id) }}"
-                                                        class="btn-action btn-view" title="{{ __('dashboard.view') }}">
-                                                        <i class="fas fa-eye"></i>
-                                                    </a>
-                                                    <a href="{{ route('permissions.edit', $permission->id) }}"
-                                                        class="btn-action btn-edit" title="{{ __('dashboard.edit') }}">
-                                                        <i class="fas fa-edit"></i>
-                                                    </a>
-                                                    <form action="{{ route('permissions.destroy', $permission->id) }}"
-                                                        method="POST" class="d-inline">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-action btn-delete"
-                                                            title="{{ __('dashboard.delete') }}"
-                                                            onclick="return confirm('{{ __('dashboard.confirm_delete') }}')">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @empty
+                                    @if($permissions->isEmpty())
                                         <tr>
                                             <td colspan="5" class="text-center py-5">
                                                 <div class="empty-state">
@@ -679,7 +626,62 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforelse
+                                    @else
+                                        @foreach ($permissions as $permission)
+                                            <tr class="permission-row">
+                                                <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                                                <td class="align-middle">
+                                                    <div class="fw-bold">{{ $permission->name }}</div>
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-clock me-1"></i>
+                                                        {{ $permission->created_at->diffForHumans() }}
+                                                    </small>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="badge bg-info">
+                                                        <i class="fas fa-users me-1"></i>
+                                                        {{ $permission->roles_count ?? 0 }}
+                                                    </span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span
+                                                        class="status-badge status-{{ $permission->status ? 'active' : 'inactive' }}">
+                                                        <i
+                                                            class="fas {{ $permission->status ? 'fa-check-circle' : 'fa-times-circle' }} me-1"></i>
+                                                        {{ $permission->status ? __('dashboard.active') : __('dashboard.inactive') }}
+                                                    </span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-calendar me-1"></i>
+                                                        {{ $permission->created_at->format('Y-m-d') }}
+                                                    </small>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <div class="btn-group actions-group">
+                                                        <a href="{{ route('permissions.show', $permission->id) }}"
+                                                            class="btn-action btn-view" title="{{ __('dashboard.view') }}">
+                                                            <i class="fas fa-eye"></i>
+                                                        </a>
+                                                        <a href="{{ route('permissions.edit', $permission->id) }}"
+                                                            class="btn-action btn-edit" title="{{ __('dashboard.edit') }}">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                        <form action="{{ route('permissions.destroy', $permission->id) }}"
+                                                            method="POST" class="d-inline">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn-action btn-delete"
+                                                                title="{{ __('dashboard.delete') }}"
+                                                                onclick="return confirm('{{ __('dashboard.confirm_delete') }}')">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

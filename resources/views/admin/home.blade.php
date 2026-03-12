@@ -214,7 +214,7 @@
                     <div class="col-md-8">
                         <h4 class="mb-1">
                             <i class="fas fa-hand-sparkles welcome-icon me-2"></i>
-                            {{ __('dashboard.welcome') }}, {{ Auth::user()->name }}!
+                            {{ __('dashboard.welcome') }}, {{ auth()->user()->name }}!
                         </h4>
                     </div>
                     <div class="col-md-4 d-flex justify-content-md-end align-items-center">
@@ -318,18 +318,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($latestProducts as $product)
-                                    <tr>
-                                        <td>{{ $product->name }}</td>
-                                        <td>{{ $product->category ? $product->category->name : '-' }}</td>
-                                        <td>{{ $product->created_at ? $product->created_at->format('Y-m-d H:i') : '-' }}
-                                        </td>
-                                    </tr>
-                                @empty
+                                @if($latestProducts->isEmpty())
                                     <tr>
                                         <td colspan="3">لا توجد منتجات حديثة</td>
                                     </tr>
-                                @endforelse
+                                @else
+                                    @foreach($latestProducts as $product)
+                                        <tr>
+                                            <td>{{ $product->name }}</td>
+                                            <td>{{ $product->category ? $product->category->name : '-' }}</td>
+                                            <td>{{ $product->created_at ? $product->created_at->format('Y-m-d H:i') : '-' }}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

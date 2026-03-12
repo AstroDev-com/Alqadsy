@@ -1,3 +1,5 @@
+
+
 @extends('admin.layouts.master')
 
 @section('content')
@@ -25,45 +27,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($categories as $index => $category)
-                        <tr>
-                            <td>{{ ($categories->currentPage() - 1) * $categories->perPage() + $index + 1 }}</td>
-                            <td class="fw-semibold">{!! highlight($category->name, request('search')) !!}</td>
-                            <td>
-                                <span title="{{ $category->description }}">
-                                    {!! highlight(Str::limit($category->description, 40), request('search')) !!}
-                                </span>
-                            </td>
-                            <td>
-                                <img src="{{ $category->image ? asset($category->image) : asset('admin/assets/img/product_default.png') }}"
-                                    alt="{{ $category->name }}" width="60" height="60" class="rounded-circle border">
-                            </td>
-                            <td>
-                                @if ($category->status == 1)
-                                    <span class="badge bg-success">نشط</span>
-                                @else
-                                    <span class="badge bg-secondary">غير نشط</span>
-                                @endif
-                            </td>
-                            <td>
-                                <a href="{{ route('admin.categories.show', $category->id) }}"
-                                    class="btn btn-info btn-sm me-1" title="عرض"><i class="fa fa-eye"></i></a>
-                                <a href="{{ route('admin.categories.edit', $category->id) }}"
-                                    class="btn btn-primary btn-sm me-1" title="تعديل"><i class="fa fa-edit"></i></a>
-                                <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST"
-                                    style="display:inline-block;" onsubmit="return confirm('هل أنت متأكد من الحذف؟');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" title="حذف"><i
-                                            class="fa fa-trash"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                    @empty
+                    @if ($categories->isEmpty())
                         <tr>
                             <td colspan="6" class="text-center text-muted">لا توجد تصنيفات حالياً.</td>
                         </tr>
-                    @endforelse
+                    @else
+                        @foreach ($categories as $index => $category)
+                            @php $search = request('search'); @endphp
+                            <tr>
+                                <td>{{ ($categories->currentPage() - 1) * $categories->perPage() + $index + 1 }}</td>
+                                <td class="fw-semibold">{!! $search ? str_ireplace($search, '<mark>' . $search . '</mark>', $category->name) : $category->name !!}</td>
+                                <td>
+                                    <span title="{{ $category->description }}">
+                                        {!! $search ? str_ireplace($search, '<mark>' . $search . '</mark>', \Illuminate\Support\Str::limit($category->description, 40)) : \Illuminate\Support\Str::limit($category->description, 40) !!}
+                                    </span>
+                                </td>
+                                <td>
+                                    <img src="{{ $category->image ? asset($category->image) : asset('admin/assets/img/product_default.png') }}"
+                                        alt="{{ $category->name }}" width="60" height="60" class="rounded-circle border">
+                                </td>
+                                <td>
+                                    @if ($category->status == 1)
+                                        <span class="badge bg-success">نشط</span>
+                                    @else
+                                        <span class="badge bg-secondary">غير نشط</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.categories.show', $category->id) }}"
+                                        class="btn btn-info btn-sm me-1" title="عرض"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}"
+                                        class="btn btn-primary btn-sm me-1" title="تعديل"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST"
+                                        style="display:inline-block;" onsubmit="return confirm('هل أنت متأكد من الحذف؟');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" title="حذف"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
             <div id="noCategoryResults" class="no-results" style="display:none;">لا توجد نتائج مطابقة.</div>
@@ -128,12 +133,4 @@
     </script>
 @endpush
 
-@php
-    function highlight(string $text, ?string $word)
-    {
-        if (!$word) {
-            return $text;
-        }
-        return str_ireplace($word, '<mark>' . $word . '</mark>', $text);
-    }
-@endphp
+

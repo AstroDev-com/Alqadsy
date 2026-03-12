@@ -604,77 +604,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($users as $user)
-                                    <tr class="category-row">
-                                        <td class="align-middle text-center">{{ $loop->iteration }}</td>
-                                        <td class="align-middle align-start">
-                                            <div class="fw-bold">{{ $user->name }}</div>
-                                        </td>
-                                        <td class="align-middle align-start">
-                                            <div class="text-muted" style="font-size: 0.85em;">{{ $user->email }}</div>
-                                        </td>
-                                        <td class="align-middle text-center">{{ $user->phone ?? '-' }}</td>
-                                        <td class="align-middle text-center">
-                                            @if ($user->status == 1)
-                                                <span class="status-badge status-active">
-                                                    <i class="fas fa-check-circle me-1"></i> {{ __('dashboard.active') }}
-                                                </span>
-                                            @else
-                                                <span class="status-badge status-inactive">
-                                                    <i class="fas fa-times-circle me-1"></i> {{ __('dashboard.inactive') }}
-                                                </span>
-                                            @endif
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            @if (!empty($user->getRoleNames()))
-                                                @foreach ($user->getRoleNames() as $rolename)
-                                                    <span class="role-badge">
-                                                        <i class="fas fa-shield-alt me-1"></i> {{ $rolename }}
-                                                    </span>
-                                                @endforeach
-                                            @else
-                                                <span class="text-muted">-</span>
-                                            @endif
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            @php
-                                                // Define the consistent default image path
-                                                $defaultImagePath = asset('admin/assets/img/emp_default.png');
-                                            @endphp
-                                            {{-- Check if profile_image exists AND is not the default placeholder string --}}
-                                            @if ($user->profile_image && $user->profile_image !== 'user_default.webp')
-                                                <img src="{{ asset('storage/' . $user->profile_image) }}"
-                                                    class="user-avatar" alt="{{ $user->name }}"
-                                                    onerror="this.onerror=null; this.src='{{ $defaultImagePath }}';">
-                                            @else
-                                                {{-- Display the default image if no custom image or if it's the default string --}}
-                                                <img src="{{ $defaultImagePath }}" class="user-avatar"
-                                                    alt="صورة افتراضية">
-                                            @endif
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <div class="btn-group actions-group">
-                                                <a href="{{ route('users.show', $user->id) }}"
-                                                    class="btn-action btn-view" title="{{ __('dashboard.view') }}">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a href="{{ route('users.edit', $user->id) }}"
-                                                    class="btn-action btn-edit" title="{{ __('dashboard.edit') }}">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <form action="{{ route('users.softdelete', $user->id) }}" method="POST"
-                                                    class="d-inline delete-form">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" class="btn-action btn-delete delete-btn"
-                                                        title="{{ __('dashboard.delete') }}">
-                                                        <i class="fas fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @empty
+                                @if($users->isEmpty())
                                     <tr>
                                         <td colspan="8" class="text-center py-5">
                                             <div class="empty-state">
@@ -691,7 +621,79 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforelse
+                                @else
+                                    @foreach ($users as $user)
+                                        <tr class="category-row">
+                                            <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                                            <td class="align-middle align-start">
+                                                <div class="fw-bold">{{ $user->name }}</div>
+                                            </td>
+                                            <td class="align-middle align-start">
+                                                <div class="text-muted" style="font-size: 0.85em;">{{ $user->email }}</div>
+                                            </td>
+                                            <td class="align-middle text-center">{{ $user->phone ?? '-' }}</td>
+                                            <td class="align-middle text-center">
+                                                @if ($user->status == 1)
+                                                    <span class="status-badge status-active">
+                                                        <i class="fas fa-check-circle me-1"></i> {{ __('dashboard.active') }}
+                                                    </span>
+                                                @else
+                                                    <span class="status-badge status-inactive">
+                                                        <i class="fas fa-times-circle me-1"></i> {{ __('dashboard.inactive') }}
+                                                    </span>
+                                                @endif
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                @if (!empty($user->getRoleNames()))
+                                                    @foreach ($user->getRoleNames() as $rolename)
+                                                        <span class="role-badge">
+                                                            <i class="fas fa-shield-alt me-1"></i> {{ $rolename }}
+                                                        </span>
+                                                    @endforeach
+                                                @else
+                                                    <span class="text-muted">-</span>
+                                                @endif
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                @php
+                                                    // Define the consistent default image path
+                                                    $defaultImagePath = asset('admin/assets/img/emp_default.png');
+                                                @endphp
+                                                {{-- Check if profile_image exists AND is not the default placeholder string --}}
+                                                @if ($user->profile_image && $user->profile_image !== 'user_default.webp')
+                                                    <img src="{{ asset('storage/' . $user->profile_image) }}"
+                                                        class="user-avatar" alt="{{ $user->name }}"
+                                                        onerror="this.onerror=null; this.src='{{ $defaultImagePath }}';">
+                                                @else
+                                                    {{-- Display the default image if no custom image or if it's the default string --}}
+                                                    <img src="{{ $defaultImagePath }}" class="user-avatar"
+                                                        alt="صورة افتراضية">
+                                                @endif
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="btn-group actions-group">
+                                                    <a href="{{ route('users.show', $user->id) }}"
+                                                        class="btn-action btn-view" title="{{ __('dashboard.view') }}">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    <a href="{{ route('users.edit', $user->id) }}"
+                                                        class="btn-action btn-edit" title="{{ __('dashboard.edit') }}">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <form action="{{ route('users.softdelete', $user->id) }}" method="POST"
+                                                        class="d-inline delete-form">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="button" class="btn-action btn-delete delete-btn"
+                                                            title="{{ __('dashboard.delete') }}">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>

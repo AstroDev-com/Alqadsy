@@ -101,6 +101,7 @@
                             @php
                                 // Get participants other than the current user
                                 $otherParticipants = $conversation->participants->where('id', '!=', Auth::id());
+                                $displayParticipants = $otherParticipants->take(3);
                                 // Check if the conversation has unread messages for the current user
                                 $isUnread = $conversation->unread_count > 0;
                             @endphp
@@ -109,16 +110,15 @@
                                     class="text-decoration-none text-dark d-flex align-items-center">
                                     {{-- Participant Avatars/Names --}}
                                     <div class="participant-avatars {{ $isRTL ?? false ? 'ms-3' : 'me-3' }}">
-                                        @forelse ($otherParticipants->take(3) as $participant)
-                                            {{-- Use placeholder for now, replace with actual avatar if available --}}
-                                            <img src="{{ $participant->profile_image ? asset('storage/' . $participant->profile_image) : asset('admin\assets\img/emp_default.png') }}"
-                                                alt="{{ $participant->name }}" class="avatar-placeholder">
-                                            {{-- <span class="avatar-placeholder"
-                                            {{-- <span class="avatar-placeholder"
-                                                title="{{ $participant->name }}">{{ strtoupper(substr($participant->name, 0, 1)) }}</span> --}}
-                                        @empty
+                                        @if($displayParticipants->isEmpty())
                                             <span class="avatar-placeholder"><i class="fas fa-user"></i></span>
-                                        @endforelse
+                                        @else
+                                            @foreach ($displayParticipants as $participant)
+                                                {{-- Use placeholder for now, replace with actual avatar if available --}}
+                                                <img src="{{ $participant->profile_image ? asset('storage/' . $participant->profile_image) : asset('admin\assets\img/emp_default.png') }}"
+                                                    alt="{{ $participant->name }}" class="avatar-placeholder">
+                                            @endforeach
+                                        @endif
                                         @if ($otherParticipants->count() > 3)
                                             <span class="avatar-placeholder">+{{ $otherParticipants->count() - 3 }}</span>
                                         @endif
