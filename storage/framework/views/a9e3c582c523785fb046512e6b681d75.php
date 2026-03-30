@@ -12,3 +12,4 @@
             </p>
         </div>
     </div>
+<?php /**PATH /home/u746187910/domains/alqadsy.com/public_html/resources/views/frontend/layouts/footer.blade.php ENDPATH**/ ?>
