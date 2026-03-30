@@ -56,14 +56,14 @@ class CheckUsers extends Command
         ];
 
         foreach ($requiredPermissions as $permission) {
-            if (!Permission::where('name', $permission)->exists()) {
+            if (!Permission::query()->where(['name' => $permission])->exists()) {
                 Permission::create(['name' => $permission, 'guard_name' => 'web']);
                 $this->info("Created permission: {$permission}");
             }
         }
 
         // Assign permissions to admin role
-        $adminRole = Role::where('name', 'admin')->first();
+        $adminRole = Role::query()->where(['name' => 'admin'])->first();
         if ($adminRole) {
             $adminRole->givePermissionTo($requiredPermissions);
             $this->info('Assigned permissions to admin role');
