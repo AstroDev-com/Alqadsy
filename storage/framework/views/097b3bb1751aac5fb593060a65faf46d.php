@@ -1,5 +1,4 @@
-@extends('frontend.layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <!-- Hero Section with Parallax Effect -->
 <section class="about-hero-section position-relative d-flex align-items-center justify-content-center" data-aos="fade-in">
@@ -17,7 +16,7 @@
             <!-- Image with Floating Badge -->
             <div class="col-lg-6 mb-5 mb-lg-0 d-flex align-items-center" data-aos="fade-right">
                 <div class="position-relative w-100">
-                    <img src="{{ asset('frontend/images/Alqadsy.png') }}" alt="ورشة القدسي - أعمال الحديد" class="img-fluid rounded-lg shadow-lg" style="object-fit: contain; height: 380px; width: 100%; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                    <img src="<?php echo e(asset('frontend/images/Alqadsy.png')); ?>" alt="ورشة القدسي - أعمال الحديد" class="img-fluid rounded-lg shadow-lg" style="object-fit: contain; height: 380px; width: 100%; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
                     <!-- Floating Experience Badge -->
                     <div class="floating-badge position-absolute text-white text-center px-4 py-3 shadow-lg rounded-lg" style="bottom: -30px; right: -20px; border: 2px solid rgba(255,255,255,0.2); z-index: 3; background-color: #111111;" data-aos="zoom-in" data-aos-delay="300">
                         <h2 class="font-weight-bold mb-0 text-white" style="font-size: 2.5rem;">+35</h2>
@@ -111,7 +110,7 @@
 </section>
 
 <!-- Animated Counters Section -->
-<section class="py-5 position-relative" style="background-image: url('{{ asset('frontend/images/img_2.jpg') }}'); background-size: cover; background-attachment: fixed; background-position: center;">
+<section class="py-5 position-relative" style="background-image: url('<?php echo e(asset('frontend/images/img_2.jpg')); ?>'); background-size: cover; background-attachment: fixed; background-position: center;">
     <div class="position-absolute w-100 h-100" style="background: rgba(0,0,0,0.85); top: 0; left: 0; z-index: 0;"></div>
     <div class="container position-relative" style="z-index: 1;">
         <div class="row text-center pt-4 pb-4">
@@ -150,7 +149,7 @@
             <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
                 <div class="team-member-card p-5 rounded-lg position-relative shadow-sm" style="background: #111111; border: 1px solid rgba(255,255,255,0.1);">
                     <!--<div class="team-img-wrap mx-auto mb-4 position-relative" style="width: 150px; height: 150px;">-->
-                    <!--    <img src="{{ asset('frontend/images/manager_portrait.png') }}" alt="عبدالحكيم القدسي" class="img-fluid rounded-circle w-100 h-100 shadow-sm object-fit-cover" style="border: 2px solid rgba(255,255,255,0.2);">-->
+                    <!--    <img src="<?php echo e(asset('frontend/images/manager_portrait.png')); ?>" alt="عبدالحكيم القدسي" class="img-fluid rounded-circle w-100 h-100 shadow-sm object-fit-cover" style="border: 2px solid rgba(255,255,255,0.2);">-->
                     <!--</div>-->
                     <h3 class="text-white font-weight-bold mb-2">عبدالحكيم القدسي</h3>
                     <p class="text-white-50 mb-4 font-weight-bold small text-uppercase letter-spacing-1">المدير العام والمؤسس</p>
@@ -164,7 +163,7 @@
             <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up" data-aos-delay="200">
                 <div class="team-member-card p-5 rounded-lg position-relative shadow-sm" style="background: #111111; border: 1px solid rgba(255,255,255,0.1);">
                     <!--<div class="team-img-wrap mx-auto mb-4 position-relative" style="width: 150px; height: 150px;">-->
-                    <!--    <img src="{{ asset('frontend/images/blacksmith_team.png') }}" alt="فريق الحدادة" class="img-fluid rounded-circle w-100 h-100 shadow-sm object-fit-cover" style="border: 2px solid rgba(255,255,255,0.2);">-->
+                    <!--    <img src="<?php echo e(asset('frontend/images/blacksmith_team.png')); ?>" alt="فريق الحدادة" class="img-fluid rounded-circle w-100 h-100 shadow-sm object-fit-cover" style="border: 2px solid rgba(255,255,255,0.2);">-->
                     <!--</div>-->
                     <h3 class="text-white font-weight-bold mb-2">عمار القدسي</h3>
                     <p class="text-white-50 mb-4 font-weight-bold small text-uppercase letter-spacing-1">حرفيون وخبراء مهنيون</p>
@@ -180,7 +179,7 @@
             <div class="col-md-6 col-lg-4 text-center mb-5" data-aos="fade-up" data-aos-delay="300">
                 <div class="team-member-card p-5 rounded-lg position-relative shadow-sm" style="background: #111111; border: 1px solid rgba(255,255,255,0.1);">
                     <!--<div class="team-img-wrap mx-auto mb-4 position-relative" style="width: 150px; height: 150px;">-->
-                    <!--    <img src="{{ asset('frontend/images/engineering_team.png') }}" alt="فريق التصميم" class="img-fluid rounded-circle w-100 h-100 shadow-sm object-fit-cover" style="border: 2px solid rgba(255,255,255,0.2);">-->
+                    <!--    <img src="<?php echo e(asset('frontend/images/engineering_team.png')); ?>" alt="فريق التصميم" class="img-fluid rounded-circle w-100 h-100 shadow-sm object-fit-cover" style="border: 2px solid rgba(255,255,255,0.2);">-->
                     <!--</div>-->
                     <h3 class="text-white font-weight-bold mb-2">علاء الفدسي</h3>
                     <p class="text-white-50 mb-4 font-weight-bold small text-uppercase letter-spacing-1">المهندسون الاستشاريون</p>
@@ -202,7 +201,7 @@
         color: #ffffff;
     }
     .about-hero-section {
-        background-image: url('{{ asset('frontend/images/img_2.jpg') }}');
+        background-image: url('<?php echo e(asset('frontend/images/img_2.jpg')); ?>');
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
@@ -291,4 +290,6 @@
         });
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('frontend.layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /home/u746187910/domains/alqadsy.com/public_html/resources/views/frontend/about.blade.php ENDPATH**/ ?>

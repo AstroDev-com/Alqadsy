@@ -105,10 +105,10 @@ class ProductController extends Controller
                 $watermarkY = (int)(($img->height() - $watermarkImg->height()) / 2);
 
                 // وضع الصورة في الوسط
-                $img->place($watermarkImg, 'top-left', $watermarkX, $watermarkY);
+                $img->place($watermarkImg, 'top-left', $watermarkX, $watermarkY, 50);
 
                 // إضافة النص (الرقم) تحت الصورة بمسافة
-                $phoneText = 'Tel: 771177763';
+                $phoneText = "Tel: 771177763\n771839780\n772382903";
                 $textY = $watermarkY + $watermarkImg->height() + 20; // 20 بكسل مسافة
                 $img->text($phoneText, $img->width() / 2, $textY, function ($font) {
                     $font->file(public_path('fonts/Amiri-Regular.ttf'));
@@ -230,10 +230,10 @@ class ProductController extends Controller
                 $watermarkY = (int)(($img->height() - $watermarkImg->height()) / 2);
 
                 // وضع الصورة في الوسط
-                $img->place($watermarkImg, 'top-left', $watermarkX, $watermarkY);
+                $img->place($watermarkImg, 'top-left', $watermarkX, $watermarkY, 50);
 
                 // إضافة النص (الرقم) تحت الصورة بمسافة
-                $phoneText = 'Tel: 771177763';
+                $phoneText = "Tel: 771177763\n771839780\n772382903";
                 $textY = $watermarkY + $watermarkImg->height() + 20; // 20 بكسل مسافة
                 $img->text($phoneText, $img->width() / 2, $textY, function ($font) {
                     $font->file(public_path('fonts/Amiri-Regular.ttf'));
