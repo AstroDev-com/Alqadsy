@@ -14,21 +14,21 @@
 
           <a href="{{ route('admin.categories.index') }}" class="menu-item">
             <div class="menu-item-left">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-tags"></i>
                 <span>التصنيفات</span>
             </div>
         </a>
 
         <a href="{{ route('admin.products.index') }}" class="menu-item">
             <div class="menu-item-left">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-box-open"></i>
                 <span>المنتجات</span>
             </div>
         </a>
 
           <a href="{{ route('home') }}" class="menu-item">
             <div class="menu-item-left">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-globe"></i>
                 <span>المشروع</span>
             </div>
         </a>

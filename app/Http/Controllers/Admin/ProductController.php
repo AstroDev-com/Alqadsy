@@ -16,10 +16,18 @@ use \Kwn\Arabic\Text\Glyphs;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('category')->get();
-        return view('admin.products.index', compact('products'));
+        $query = Product::with('category');
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        $products = $query->latest()->get();
+        $categories = Category::all();
+
+        return view('admin.products.index', compact('products', 'categories'));
     }
     public function create()
     {

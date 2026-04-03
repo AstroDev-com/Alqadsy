@@ -1,6 +1,4 @@
-@extends('admin.layouts.master')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <style>
         .product-img {
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
@@ -84,30 +82,32 @@
     </style>
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
-            <h1 class="fw-bold mb-2"  style="font-size:2rem;">{{ __('dashboard.products') }}</h1>
-            <a href="{{ route('admin.products.create') }}" class="btn btn-success shadow mb-2" data-bs-toggle="tooltip"
-                title="{{ __('dashboard.create_product') }}">
-                <i class="fa fa-plus"></i> {{ __('dashboard.create_product') }}
+            <h1 class="fw-bold mb-2"  style="font-size:2rem;"><?php echo e(__('dashboard.products')); ?></h1>
+            <a href="<?php echo e(route('admin.products.create')); ?>" class="btn btn-success shadow mb-2" data-bs-toggle="tooltip"
+                title="<?php echo e(__('dashboard.create_product')); ?>">
+                <i class="fa fa-plus"></i> <?php echo e(__('dashboard.create_product')); ?>
+
             </a>
         </div>
         <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
-            <form action="{{ route('admin.products.index') }}" method="GET" class="d-flex align-items-center flex-wrap gap-2">
+            <form action="<?php echo e(route('admin.products.index')); ?>" method="GET" class="d-flex align-items-center flex-wrap gap-2">
                 <select name="category_id" class="form-select search-bar" style="min-width: 180px;">
-                    <option value="">{{ __('كل التصنيفات') }}</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
-                            {{ $category->name }}
+                    <option value=""><?php echo e(__('كل التصنيفات')); ?></option>
+                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <option value="<?php echo e($category->id); ?>" <?php echo e(request('category_id') == $category->id ? 'selected' : ''); ?>>
+                            <?php echo e($category->name); ?>
+
                         </option>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
                 <button type="submit" class="btn btn-primary px-4 shadow-sm" style="border-radius: 25px;">
                     <i class="fa fa-filter me-1"></i> تصفية
                 </button>
-                @if(request('category_id'))
-                    <a href="{{ route('admin.products.index') }}" class="btn btn-outline-secondary px-3" style="border-radius: 25px;">
+                <?php if(request('category_id')): ?>
+                    <a href="<?php echo e(route('admin.products.index')); ?>" class="btn btn-outline-secondary px-3" style="border-radius: 25px;">
                         <i class="fa fa-times me-1"></i> إلغاء
                     </a>
-                @endif
+                <?php endif; ?>
             </form>
             <div class="search-wrap">
                 <input type="text" id="productSearch" class="form-control search-bar"
@@ -120,62 +120,62 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{ __('dashboard.name') }}</th>
-                            <th>{{ __('dashboard.description') }}</th>
-                            <th>{{ __('dashboard.image') }}</th>
-                            <th>{{ __('dashboard.status') }}</th>
-                            <th>{{ __('dashboard.category') }}</th>
-                            <th>{{ __('dashboard.actions') }}</th>
+                            <th><?php echo e(__('dashboard.name')); ?></th>
+                            <th><?php echo e(__('dashboard.description')); ?></th>
+                            <th><?php echo e(__('dashboard.image')); ?></th>
+                            <th><?php echo e(__('dashboard.status')); ?></th>
+                            <th><?php echo e(__('dashboard.category')); ?></th>
+                            <th><?php echo e(__('dashboard.actions')); ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($products as $index => $product)
+                        <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td>{{ $products->count() - $index }}</td>
-                                <td class="fw-semibold">{{ $product->name }}</td>
-                                <td>{{ Str::limit($product->description, 50) }}</td>
+                                <td><?php echo e($products->count() - $index); ?></td>
+                                <td class="fw-semibold"><?php echo e($product->name); ?></td>
+                                <td><?php echo e(Str::limit($product->description, 50)); ?></td>
                                 <td>
-                                    <img src="{{ asset($product->image ?? 'admin/assets/img/product_default.png') }}"
-                                        alt="{{ $product->name }}" width="60"
+                                    <img src="<?php echo e(asset($product->image ?? 'admin/assets/img/product_default.png')); ?>"
+                                        alt="<?php echo e($product->name); ?>" width="60"
                                         class="rounded-circle border product-img">
                                 </td>
                                 <td>
-                                    @if ($product->status == 1)
+                                    <?php if($product->status == 1): ?>
                                         <span
-                                            class="badge badge-status badge-active px-3 py-2">{{ __('dashboard.active') }}</span>
-                                    @else
+                                            class="badge badge-status badge-active px-3 py-2"><?php echo e(__('dashboard.active')); ?></span>
+                                    <?php else: ?>
                                         <span
-                                            class="badge badge-status badge-inactive px-3 py-2">{{ __('dashboard.inactive') }}</span>
-                                    @endif
+                                            class="badge badge-status badge-inactive px-3 py-2"><?php echo e(__('dashboard.inactive')); ?></span>
+                                    <?php endif; ?>
                                 </td>
-                                <td>{{ $product->category->name ?? '-' }}</td>
+                                <td><?php echo e($product->category->name ?? '-'); ?></td>
                                 <td class="action-btns">
-                                    <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-info btn-sm"
-                                        data-bs-toggle="tooltip" title="{{ __('dashboard.view') }}">
+                                    <a href="<?php echo e(route('admin.products.show', $product->id)); ?>" class="btn btn-info btn-sm"
+                                        data-bs-toggle="tooltip" title="<?php echo e(__('dashboard.view')); ?>">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('admin.products.edit', $product->id) }}"
+                                    <a href="<?php echo e(route('admin.products.edit', $product->id)); ?>"
                                         class="btn btn-primary btn-sm" data-bs-toggle="tooltip"
-                                        title="{{ __('dashboard.edit') }}">
+                                        title="<?php echo e(__('dashboard.edit')); ?>">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
+                                    <form action="<?php echo e(route('admin.products.destroy', $product->id)); ?>" method="POST"
                                         style="display:inline-block;" onsubmit="return confirm('هل أنت متأكد من الحذف؟');">
-                                        @csrf
-                                        @method('DELETE')
+                                        <?php echo csrf_field(); ?>
+                                        <?php echo method_field('DELETE'); ?>
                                         <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip"
-                                            title="{{ __('dashboard.delete') }}">
+                                            title="<?php echo e(__('dashboard.delete')); ?>">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
                 <div id="noResults" class="no-results" style="display:none;">لا توجد نتائج مطابقة.</div>
             </div>
-            {{-- {{ $products->links() }} --}}
+            
         </div>
     </div>
     <script>
@@ -211,4 +211,6 @@
             }
         });
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.master', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\All My Project\GitHub_Project\AstroDev GitHub\Alqadsy\Hostinger\Alqadsy Hostinger\resources\views/admin/products/index.blade.php ENDPATH**/ ?>
