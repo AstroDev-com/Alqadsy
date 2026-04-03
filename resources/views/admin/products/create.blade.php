@@ -22,13 +22,14 @@
                     <input type="hidden" name="name" value="auto">
                     <input type="hidden" name="description" value="auto">
                     <div class="form-group mb-3">
-                        <label for="image">{{ __('dashboard.product_image') }}</label>
-                        <input type="file" name="image" class="form-control" required>
+                        <label for="images">{{ __('dashboard.product_images') }}</label>
+                        <input type="file" name="images[]" class="form-control" multiple required>
                     </div>
                     <input type="hidden" name="status" value="1">
                     <div class="form-group mb-4">
                         <label for="category_id">{{ __('dashboard.category') }}</label>
                         <select name="category_id" class="form-control" required>
+                            <option value="" disabled selected>-- اختر القسم --</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
