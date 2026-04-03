@@ -47,12 +47,28 @@ class ProductController extends Controller
         }
 
         $request->validate([
-            'name' => 'required|unique:products',
-            'description' => 'nullable',
             'image' => $imageRules,
             'status' => 'required|in:1,0',
             'category_id' => 'required|exists:categories,id',
         ]);
+
+        $category = Category::findOrFail($request->category_id);
+        $categoryName = $category->name;
+
+        // البحث عن أعلى رقم للمنتجات في هذا القسم
+        $latestProduct = Product::where('category_id', $request->category_id)
+            ->where('name', 'LIKE', $categoryName . ' %')
+            ->get()
+            ->map(function ($p) use ($categoryName) {
+                // استخراج الرقم من نهاية الاسم
+                $parts = explode(' ', $p->name);
+                $lastPart = end($parts);
+                return is_numeric($lastPart) ? (int)$lastPart : 0;
+            })->max();
+
+        $nextNumber = ($latestProduct ?: 0) + 1;
+        $generatedName = $categoryName . ' ' . $nextNumber;
+        $generatedDescription = $generatedName; // يمكن تخصيصه لاحقاً إذا لزم الأمر
 
         $imageName = null;
         if ($request->hasFile('image')) {
@@ -90,7 +106,7 @@ class ProductController extends Controller
                 return redirect()->back()->withErrors(['image' => 'نوع الصورة غير مدعوم.']);
             }
 
-            $filename = Str::slug($request->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
+            $filename = Str::slug($generatedName) . '-' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image->getRealPath());
             $img->resize(770, 513, function ($constraint) {
@@ -136,8 +152,8 @@ class ProductController extends Controller
         }
 
         $product = new Product();
-        $product->name = $request->name;
-        $product->description = $request->description;
+        $product->name = $generatedName;
+        $product->description = $generatedDescription;
         $product->image = $imageName;
         $product->status = $request->status;
         $product->category_id = $request->category_id;

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- مضيف: 127.0.0.1:3306
--- وقت الجيل: 03 أبريل 2026 الساعة 11:29
--- إصدار الخادم: 11.8.6-MariaDB-log
--- نسخة PHP: 7.2.34
+-- Host: 127.0.0.1
+-- Generation Time: 03 أبريل 2026 الساعة 15:52
+-- إصدار الخادم: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- قاعدة بيانات: `u746187910_alqadsy`
+-- Database: `u746187910_alqadsy`
 --
 
 -- --------------------------------------------------------
@@ -387,7 +387,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `image`, `status`, `categor
 (37, 'باب مداخل اكمبند 7', 'متانة وقوة في التنفيذ', 'images/products/bab-mdakhl-akmbnd-7-1775214976.jpg', '1', 2, '2026-04-03 14:16:17', '2026-04-03 14:23:55'),
 (38, 'باب مداخل اكمبند 8', 'خامات مختارة بعناية', 'images/products/bab-mdakhl-akmbnd-8-1775215110.jpg', '1', 2, '2026-04-03 14:18:31', '2026-04-03 14:24:04'),
 (39, 'باب مداخل اكمبند 9', 'إبداع في التصميم', 'images/products/bab-mdakhl-akmbnd-9-1775215563.jpg', '1', 2, '2026-04-03 14:26:03', '2026-04-03 14:26:03'),
-(40, 'باب مداخل اكمبند 10', 'فخامة وأناقة ملكية', 'images/products/bab-mdakhl-akmbnd-10-1775215740.jpg', '1', 2, '2026-04-03 14:29:00', '2026-04-03 14:29:00');
+(40, 'باب مداخل اكمبند 10', 'فخامة وأناقة ملكية', 'images/products/bab-mdakhl-akmbnd-10-1775215740.jpg', '1', 2, '2026-04-03 14:29:00', '2026-04-03 14:29:00'),
+(41, 'ابواب مداخل 1', 'ابواب مداخل 1', 'images/products/aboab-mdakhl-1-1775224221.jpg', '1', 1, '2026-04-03 13:50:21', '2026-04-03 13:50:21');
 
 -- --------------------------------------------------------
 
@@ -430,50 +431,50 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 1),
+(1, 2),
+(1, 3),
 (2, 1),
+(2, 2),
 (3, 1),
+(3, 2),
 (4, 1),
+(4, 2),
 (5, 1),
+(5, 2),
 (6, 1),
+(6, 2),
 (7, 1),
+(7, 2),
 (8, 1),
 (9, 1),
 (10, 1),
+(10, 2),
 (11, 1),
 (12, 1),
 (13, 1),
 (14, 1),
 (15, 1),
-(16, 1),
-(17, 1),
-(18, 1),
-(19, 1),
-(20, 1),
-(21, 1),
-(22, 1),
-(23, 1),
-(24, 1),
-(25, 1),
-(1, 2),
-(2, 2),
-(3, 2),
-(4, 2),
-(5, 2),
-(6, 2),
-(7, 2),
-(10, 2),
 (15, 2),
+(16, 1),
 (16, 2),
+(17, 1),
 (17, 2),
+(18, 1),
 (18, 2),
+(19, 1),
 (19, 2),
+(20, 1),
 (20, 2),
+(21, 1),
 (21, 2),
+(22, 1),
 (22, 2),
+(23, 1),
 (23, 2),
+(24, 1),
 (24, 2),
-(25, 2),
-(1, 3);
+(25, 1),
+(25, 2);
 
 -- --------------------------------------------------------
 
@@ -495,9 +496,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Qie3tdZqDDFLR6o2M3Imz2paSwty49bx9ayb0L6V', NULL, '134.35.36.88', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoic1kzYTBOTlY0N1NjSGpOam41aEk4S3E2YU5hRFhNcG1FQXV6TnhuZiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHBzOi8vYWxxYWRzeS5jb20vZ2FsbGVyeSI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1775214172),
-('S41k7yAnyukooOZbdnFVEJrat8aQsstLkK0vm3fs', 1, '134.35.36.88', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiaHEwc0VBZHlVU3RqdzRzWXlYVHJYTEtLVjdXWXliSnE1Rnl0TGd6WCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHBzOi8vYWxxYWRzeS5jb20vYXIvcHJvZHVjdHMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoibG9jYWxlIjtzOjI6ImFyIjtzOjU6InRoZW1lIjtzOjU6ImxpZ2h0Ijt9', 1775215740),
-('svt4CLBSq2EWvxhus04iQmjNpRC4ukzXTLveut5j', NULL, '134.35.36.88', 'Mozilla/5.0 (Linux; Android 13; SM-N986U Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/146.0.7680.164 Mobile Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRFJmZk5vd0lTVjFLOUZIS3pwTEFOR1VOWjM5MWNrNUF3TEE2UUVVaCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzE6Imh0dHBzOi8vd3d3LmFscWFkc3kuY29tL2dhbGxlcnkiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1775214661);
+('Fk7Z17dTsUaNu9NcaVQlqOVpOLMdDrx2MqlWmmuW', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiS2E3MTVIZlFwZEIwUWhnUWk3U1FyeDlQNFdaSElja2NTQmNTVHhwbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hci9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6NjoibG9jYWxlIjtzOjI6ImFyIjtzOjU6InRoZW1lIjtzOjQ6ImRhcmsiO30=', 1775224301);
 
 -- --------------------------------------------------------
 
@@ -521,11 +520,11 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `key`, `value`, `group`, `type`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'site_name', 'مدونتي', 'general', 'text', 'اسم الموقع', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
-(2, 'site_description', 'مدونة شخصية', 'general', 'textarea', 'وصف الموقع', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
+(1, 'site_name', 'ورشة القدسي', 'general', 'text', 'اسم الموقع', '2026-03-30 20:30:10', '2026-04-03 12:43:44'),
+(2, 'site_description', 'ورشة القدسي', 'general', 'textarea', 'وصف الموقع', '2026-03-30 20:30:10', '2026-04-03 12:43:44'),
 (3, 'site_logo', NULL, 'general', 'image', 'شعار الموقع', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
 (4, 'contact_email', 'info@example.com', 'contact', 'email', 'البريد الإلكتروني للتواصل', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
-(5, 'contact_phone', '+1234567890', 'contact', 'text', 'رقم الهاتف للتواصل', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
+(5, 'contact_phone', '779121779', 'contact', 'text', 'رقم الهاتف للتواصل', '2026-03-30 20:30:10', '2026-04-03 12:43:44'),
 (6, 'facebook_url', 'https://facebook.com', 'social', 'url', 'رابط صفحة الفيسبوك', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
 (7, 'twitter_url', 'https://twitter.com', 'social', 'url', 'رابط حساب تويتر', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
 (8, 'instagram_url', 'https://instagram.com', 'social', 'url', 'رابط حساب انستغرام', '2026-03-30 20:30:10', '2026-03-30 20:30:10'),
@@ -569,59 +568,59 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `pr
 --
 
 --
--- فهارس للجدول `cache`
+-- Indexes for table `cache`
 --
 ALTER TABLE `cache`
   ADD PRIMARY KEY (`key`);
 
 --
--- فهارس للجدول `cache_locks`
+-- Indexes for table `cache_locks`
 --
 ALTER TABLE `cache_locks`
   ADD PRIMARY KEY (`key`);
 
 --
--- فهارس للجدول `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `categories_name_unique` (`name`);
 
 --
--- فهارس للجدول `conversations`
+-- Indexes for table `conversations`
 --
 ALTER TABLE `conversations`
   ADD PRIMARY KEY (`id`);
 
 --
--- فهارس للجدول `conversation_participants`
+-- Indexes for table `conversation_participants`
 --
 ALTER TABLE `conversation_participants`
   ADD PRIMARY KEY (`conversation_id`,`user_id`),
   ADD KEY `conversation_participants_user_id_foreign` (`user_id`);
 
 --
--- فهارس للجدول `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- فهارس للجدول `jobs`
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `jobs_queue_index` (`queue`);
 
 --
--- فهارس للجدول `job_batches`
+-- Indexes for table `job_batches`
 --
 ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
--- فهارس للجدول `messages`
+-- Indexes for table `messages`
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`),
@@ -631,47 +630,47 @@ ALTER TABLE `messages`
   ADD KEY `messages_user_id_foreign` (`user_id`);
 
 --
--- فهارس للجدول `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- فهارس للجدول `model_has_permissions`
+-- Indexes for table `model_has_permissions`
 --
 ALTER TABLE `model_has_permissions`
   ADD PRIMARY KEY (`permission_id`,`model_id`,`model_type`),
   ADD KEY `model_has_permissions_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
--- فهارس للجدول `model_has_roles`
+-- Indexes for table `model_has_roles`
 --
 ALTER TABLE `model_has_roles`
   ADD PRIMARY KEY (`role_id`,`model_id`,`model_type`),
   ADD KEY `model_has_roles_model_id_model_type_index` (`model_id`,`model_type`);
 
 --
--- فهارس للجدول `notifications`
+-- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`),
   ADD KEY `notifications_notifiable_type_notifiable_id_index` (`notifiable_type`,`notifiable_id`);
 
 --
--- فهارس للجدول `password_reset_tokens`
+-- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- فهارس للجدول `permissions`
+-- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `permissions_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- فهارس للجدول `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -679,28 +678,28 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- فهارس للجدول `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `products_category_id_foreign` (`category_id`);
 
 --
--- فهارس للجدول `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `roles_name_guard_name_unique` (`name`,`guard_name`);
 
 --
--- فهارس للجدول `role_has_permissions`
+-- Indexes for table `role_has_permissions`
 --
 ALTER TABLE `role_has_permissions`
   ADD PRIMARY KEY (`permission_id`,`role_id`),
   ADD KEY `role_has_permissions_role_id_foreign` (`role_id`);
 
 --
--- فهارس للجدول `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
@@ -708,14 +707,14 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- فهارس للجدول `settings`
+-- Indexes for table `settings`
 --
 ALTER TABLE `settings`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `settings_key_unique` (`key`);
 
 --
--- فهارس للجدول `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -777,7 +776,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -798,7 +797,7 @@ ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- القيود المفروضة على الجداول الملقاة
+-- قيود الجداول المُلقاة.
 --
 
 --

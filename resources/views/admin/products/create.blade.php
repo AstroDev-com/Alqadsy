@@ -18,25 +18,14 @@
                 @endif
                 <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group mb-3">
-                        <label for="name">{{ __('dashboard.name') }}</label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="description">{{ __('dashboard.description') }}</label>
-                        <input type="text" name="description" class="form-control" required>
-                    </div>
+                    {{-- الحقول التالية يتم توليدها تلقائياً --}}
+                    <input type="hidden" name="name" value="auto">
+                    <input type="hidden" name="description" value="auto">
                     <div class="form-group mb-3">
                         <label for="image">{{ __('dashboard.product_image') }}</label>
                         <input type="file" name="image" class="form-control" required>
                     </div>
-                    <div class="form-group mb-3">
-                        <label for="status">{{ __('dashboard.status') }}</label>
-                        <select name="status" class="form-control" required>
-                            <option value="1">{{ __('dashboard.active') }}</option>
-                            <option value="0">{{ __('dashboard.inactive') }}</option>
-                        </select>
-                    </div>
+                    <input type="hidden" name="status" value="1">
                     <div class="form-group mb-4">
                         <label for="category_id">{{ __('dashboard.category') }}</label>
                         <select name="category_id" class="form-control" required>

@@ -16,14 +16,9 @@
                 <?php endif; ?>
                 <form action="<?php echo e(route('admin.products.store')); ?>" method="post" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
-                    <div class="form-group mb-3">
-                        <label for="name"><?php echo e(__('dashboard.name')); ?></label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="description"><?php echo e(__('dashboard.description')); ?></label>
-                        <input type="text" name="description" class="form-control" required>
-                    </div>
+                    
+                    <input type="hidden" name="name" value="auto">
+                    <input type="hidden" name="description" value="auto">
                     <div class="form-group mb-3">
                         <label for="image"><?php echo e(__('dashboard.product_image')); ?></label>
                         <input type="file" name="image" class="form-control" required>
