@@ -14,9 +14,9 @@
     <div class="container">
         <div class="row align-items-center my-5">
             <!-- Image with Floating Badge -->
-            <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                <div class="position-relative">
-                    <img src="<?php echo e(asset('frontend/images/img_2.jpg')); ?>" alt="ورشة القدسي - أعمال الحديد" class="img-fluid rounded-lg shadow-lg" style="object-fit: cover; height: 500px; width: 100%; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
+            <div class="col-lg-6 mb-5 mb-lg-0 d-flex align-items-center" data-aos="fade-right">
+                <div class="position-relative w-100">
+                    <img src="<?php echo e(asset('frontend/images/Alqadsy.png')); ?>" alt="ورشة القدسي - أعمال الحديد" class="img-fluid rounded-lg shadow-lg" style="object-fit: contain; height: 380px; width: 100%; padding: 20px; background: rgba(255,255,255,0.02); border-radius: 15px; border: 1px solid rgba(255,255,255,0.1);">
                     <!-- Floating Experience Badge -->
                     <div class="floating-badge position-absolute text-white text-center px-4 py-3 shadow-lg rounded-lg" style="bottom: -30px; right: -20px; border: 2px solid rgba(255,255,255,0.2); z-index: 3; background-color: #111111;" data-aos="zoom-in" data-aos-delay="300">
                         <h2 class="font-weight-bold mb-0 text-white" style="font-size: 2.5rem;">+35</h2>
@@ -115,7 +115,7 @@
     <div class="container position-relative" style="z-index: 1;">
         <div class="row text-center pt-4 pb-4">
             <div class="col-md-4 mb-4 mb-md-0" data-aos="zoom-in" data-aos-delay="100">
-                <h2 class="display-3 font-weight-bold text-white mb-2 counter" data-target="500" style="direction: ltr; display: inline-block;">0</h2>
+                <h2 class="display-3 font-weight-bold text-white mb-2 counter" data-target="5000" style="direction: ltr; display: inline-block;">0</h2>
                 <br>
                 <span class="text-white-50 text-uppercase letter-spacing-1 font-weight-bold">مشاريع مكتملة</span>
             </div>
@@ -125,7 +125,7 @@
                 <span class="text-white-50 text-uppercase letter-spacing-1 font-weight-bold">سنوات الخبرة</span>
             </div>
             <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-                <h2 class="display-3 font-weight-bold text-white mb-2 counter" data-target="1000" style="direction: ltr; display: inline-block;">0</h2>
+                <h2 class="display-3 font-weight-bold text-white mb-2 counter" data-target="10000" style="direction: ltr; display: inline-block;">0</h2>
                 <br>
                 <span class="text-white-50 text-uppercase letter-spacing-1 font-weight-bold">عملاء سعداء</span>
             </div>
@@ -154,10 +154,8 @@
                     <h3 class="text-white font-weight-bold mb-2">عبدالحكيم القدسي</h3>
                     <p class="text-white-50 mb-4 font-weight-bold small text-uppercase letter-spacing-1">المدير العام والمؤسس</p>
                     <p class="text-white mb-4 px-2" style="opacity: 0.8;">يمتلك خبرة تزيد عن 35 عاماً في مجال الحدادة والأعمال المعدنية. متخصص في تصميم وتنفيذ المشاريع المعقدة والدقيقة بأعلى مستويات الإحترافية.</p>
-                    <div class="social-links">
-                        <a href="https://wa.me/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-dark mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-whatsapp"></span></a>
-                        <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-dark mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-facebook"></span></a>
-                    </div>
+                    <br>
+
                 </div>
             </div>
             
@@ -171,8 +169,8 @@
                     <p class="text-white-50 mb-4 font-weight-bold small text-uppercase letter-spacing-1">حرفيون وخبراء مهنيون</p>
                     <p class="text-white mb-4 px-2" style="opacity: 0.8;">فريق محترف من الحرفيين المتخصصين في اللحام والتركيب ومختلف أنواع الأعمال المعدنية، ينفذون أصعب التحديات بمهارة استثنائية.</p>
                     <div class="social-links">
-                        <a href="https://wa.me/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-dark mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-whatsapp"></span></a>
-                        <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-dark mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-facebook"></span></a>
+                        <a href="https://wa.me/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-secondary text-white mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-whatsapp"></span></a>
+                        <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-secondary text-white mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-facebook"></span></a>
                     </div>
                 </div>
             </div>
@@ -187,8 +185,8 @@
                     <p class="text-white-50 mb-4 font-weight-bold small text-uppercase letter-spacing-1">المهندسون الاستشاريون</p>
                     <p class="text-white mb-4 px-2" style="opacity: 0.8;">مصممون محترفون متخصصون في تصميم الأعمال المعدنية والحديدية بلمسات فنية بديعة تجمع بين الأناقة المطلقة والبنية الوظيفية القوية.</p>
                     <div class="social-links">
-                        <a href="https://wa.me/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-dark mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-whatsapp"></span></a>
-                        <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-white text-dark mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-facebook"></span></a>
+                        <a href="https://wa.me/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-secondary text-white mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-whatsapp"></span></a>
+                        <a href="https://www.facebook.com/share/1EyxBLDgNc/" class="d-inline-flex align-items-center justify-content-center rounded-circle bg-secondary text-white mx-1" style="width: 40px; height: 40px; transition: all 0.3s ease;"><span class="icon-facebook"></span></a>
                     </div>
                 </div>
             </div>
