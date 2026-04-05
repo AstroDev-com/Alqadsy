@@ -71,10 +71,7 @@ class UserController extends Controller
             // معالجة الصورة الأصلية
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image->getRealPath());
-            $img->resize(770, 513, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $img->scaleDown(770, 513);
 
             // حفظ الصورة الأصلية
             $path = 'users/' . $filename;
@@ -82,10 +79,7 @@ class UserController extends Controller
 
             // معالجة الصورة المصغرة
             $thumbnail = $manager->read($image->getRealPath());
-            $thumbnail->resize(400, 210, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $thumbnail->scaleDown(400, 210);
 
             // حفظ الصورة المصغرة
             $thumbnailPath = 'users/thumbnails/' . $filename;
@@ -153,10 +147,7 @@ class UserController extends Controller
             // معالجة الصورة الأصلية
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image->getRealPath());
-            $img->resize(770, 513, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $img->scaleDown(770, 513);
 
             // حفظ الصورة الأصلية
             $path = 'users/' . $filename;
@@ -164,10 +155,7 @@ class UserController extends Controller
 
             // معالجة الصورة المصغرة
             $thumbnail = $manager->read($image->getRealPath());
-            $thumbnail->resize(400, 210, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $thumbnail->scaleDown(400, 210);
 
             // حفظ الصورة المصغرة
             $thumbnailPath = 'users/thumbnails/' . $filename;
@@ -270,7 +258,7 @@ class UserController extends Controller
 
             $user->forceDelete();
             DB::commit();
-            return redirect()->route('dashboard')->with('success', 'تم الحذف النهائي بنجاح');
+            return redirect()->route('users.index')->with('success', 'تم الحذف النهائي بنجاح');
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', 'فشل الحذف النهائي: ' . $e->getMessage());

@@ -1,12 +1,11 @@
-@extends('admin.layouts.master')
-@section('title', __('dashboard.users_list'))
+<?php $__env->startSection('title', __('dashboard.users_list')); ?>
 
-@section('breadcrumb')
-    @parent
-    <li class="breadcrumb-item active">{{ __('dashboard.users_list') }}</li>
-@endsection
+<?php $__env->startSection('breadcrumb'); ?>
+    <?php echo \Illuminate\View\Factory::parentPlaceholder('breadcrumb'); ?>
+    <li class="breadcrumb-item active"><?php echo e(__('dashboard.users_list')); ?></li>
+<?php $__env->stopSection(); ?>
 
-@push('styles')
+<?php $__env->startPush('styles'); ?>
     <style>
         .categories-list-card {
             border: none;
@@ -507,10 +506,10 @@
             padding-right: 1rem;
         }
     </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@section('content')
-    @include('admin.role-permission.nav-links')
+<?php $__env->startSection('content'); ?>
+    <?php echo $__env->make('admin.role-permission.nav-links', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="card categories-list-card m-2">
@@ -520,40 +519,42 @@
                             <i class="fas fa-users text-warning"></i>
                         </div>
                         <div class="ms-3">
-                            <h3 class="card-title mb-0">{{ __('dashboard.users_list') }}</h3>
-                            <p class="text-muted mb-0">{{ __('dashboard.manage_users') }}</p>
+                            <h3 class="card-title mb-0"><?php echo e(__('dashboard.users_list')); ?></h3>
+                            <p class="text-muted mb-0"><?php echo e(__('dashboard.manage_users')); ?></p>
                         </div>
                     </div>
-                    <a href="{{ route('users.create') }}" class="btn btn-primary add-user-btn">
+                    <a href="<?php echo e(route('users.create')); ?>" class="btn btn-primary add-user-btn">
                         <i class="fas fa-plus me-2"></i>
-                        <span>{{ __('dashboard.add_user') }}</span>
+                        <span><?php echo e(__('dashboard.add_user')); ?></span>
                     </a>
                 </div>
                 <div class="card-body">
-                    <form id="filterForm" action="{{ route('users.index') }}" method="GET"
+                    <form id="filterForm" action="<?php echo e(route('users.index')); ?>" method="GET"
                         class="row g-3 align-items-center filter-row mb-4">
                         <div class="col-md-4 col-lg-4">
                             <div class="form-group floating-label mb-0">
                                 <label for="userSearchInput" class="form-label">
-                                    <i class="fas fa-search"></i> {{ __('dashboard.search_users') }}
+                                    <i class="fas fa-search"></i> <?php echo e(__('dashboard.search_users')); ?>
+
                                 </label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="userSearchInput"
-                                        placeholder="{{ __('dashboard.search_users') }}">
+                                        placeholder="<?php echo e(__('dashboard.search_users')); ?>">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-3 col-lg-2">
                             <div class="form-group floating-label mb-0">
                                 <label for="sortBy" class="form-label">
-                                    <i class="fas fa-sort"></i> {{ __('dashboard.sort_by') }}
+                                    <i class="fas fa-sort"></i> <?php echo e(__('dashboard.sort_by')); ?>
+
                                 </label>
                                 <div class="input-group">
                                     <select class="form-control" id="sortBy">
-                                        <option value="name_asc">{{ __('dashboard.sort_by_name_asc') }}</option>
-                                        <option value="name_desc">{{ __('dashboard.sort_by_name_desc') }}</option>
-                                        <option value="date_asc">{{ __('dashboard.sort_by_date_asc') }}</option>
-                                        <option value="date_desc">{{ __('dashboard.sort_by_date_desc') }}</option>
+                                        <option value="name_asc"><?php echo e(__('dashboard.sort_by_name_asc')); ?></option>
+                                        <option value="name_desc"><?php echo e(__('dashboard.sort_by_name_desc')); ?></option>
+                                        <option value="date_asc"><?php echo e(__('dashboard.sort_by_date_asc')); ?></option>
+                                        <option value="date_desc"><?php echo e(__('dashboard.sort_by_date_desc')); ?></option>
                                     </select>
                                 </div>
                             </div>
@@ -561,13 +562,14 @@
                         <div class="col-md-3 col-lg-2">
                             <div class="form-group floating-label mb-0">
                                 <label for="statusFilter" class="form-label">
-                                    <i class="fas fa-filter"></i> {{ __('dashboard.status') }}
+                                    <i class="fas fa-filter"></i> <?php echo e(__('dashboard.status')); ?>
+
                                 </label>
                                 <div class="input-group">
                                     <select class="form-control" id="statusFilter">
-                                        <option value="">{{ __('dashboard.all_statuses') }}</option>
-                                        <option value="active">{{ __('dashboard.active') }}</option>
-                                        <option value="inactive">{{ __('dashboard.inactive') }}</option>
+                                        <option value=""><?php echo e(__('dashboard.all_statuses')); ?></option>
+                                        <option value="active"><?php echo e(__('dashboard.active')); ?></option>
+                                        <option value="inactive"><?php echo e(__('dashboard.inactive')); ?></option>
                                     </select>
                                 </div>
                             </div>
@@ -576,11 +578,13 @@
                             <div class="filter-buttons">
                                 <button type="submit" class="btn btn-secondary" id="applyFilters">
                                     <i class="fas fa-check me-1"></i>
-                                    {{ __('dashboard.apply_filters') }}
+                                    <?php echo e(__('dashboard.apply_filters')); ?>
+
                                 </button>
-                                <a href="{{ route('users.index') }}" class="btn btn-secondary">
+                                <a href="<?php echo e(route('users.index')); ?>" class="btn btn-secondary">
                                     <i class="fas fa-redo me-1"></i>
-                                    {{ __('dashboard.reset') }}
+                                    <?php echo e(__('dashboard.reset')); ?>
+
                                 </a>
                             </div>
                         </div>
@@ -590,123 +594,133 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th><i class="fas fa-user me-1"></i>{{ __('dashboard.name') }}</th>
-                                    <th><i class="fas fa-envelope me-1"></i>{{ __('dashboard.email') }}</th>
-                                    <th class="text-center"><i class="fas fa-phone me-1"></i>{{ __('dashboard.phone') }}
+                                    <th><i class="fas fa-user me-1"></i><?php echo e(__('dashboard.name')); ?></th>
+                                    <th><i class="fas fa-envelope me-1"></i><?php echo e(__('dashboard.email')); ?></th>
+                                    <th class="text-center"><i class="fas fa-phone me-1"></i><?php echo e(__('dashboard.phone')); ?>
+
                                     </th>
-                                    <th class="text-center"><i class="fas fa-circle me-1"></i>{{ __('dashboard.status') }}
+                                    <th class="text-center"><i class="fas fa-circle me-1"></i><?php echo e(__('dashboard.status')); ?>
+
                                     </th>
-                                    <th class="text-center"><i class="fas fa-key me-1"></i>{{ __('dashboard.roles') }}</th>
-                                    <th class="text-center"><i class="fas fa-image me-1"></i>{{ __('dashboard.image') }}
+                                    <th class="text-center"><i class="fas fa-key me-1"></i><?php echo e(__('dashboard.roles')); ?></th>
+                                    <th class="text-center"><i class="fas fa-image me-1"></i><?php echo e(__('dashboard.image')); ?>
+
                                     </th>
-                                    <th class="text-center"><i class="fas fa-cogs me-1"></i>{{ __('dashboard.actions') }}
+                                    <th class="text-center"><i class="fas fa-cogs me-1"></i><?php echo e(__('dashboard.actions')); ?>
+
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($users as $user)
+                                <?php $__empty_1 = true; $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                     <tr class="category-row">
-                                        <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                                        <td class="align-middle text-center"><?php echo e($loop->iteration); ?></td>
                                         <td class="align-middle align-start">
-                                            <div class="fw-bold">{{ $user->name }}</div>
+                                            <div class="fw-bold"><?php echo e($user->name); ?></div>
                                         </td>
                                         <td class="align-middle align-start">
-                                            <div class="text-muted" style="font-size: 0.85em;">{{ $user->email }}</div>
+                                            <div class="text-muted" style="font-size: 0.85em;"><?php echo e($user->email); ?></div>
                                         </td>
-                                        <td class="align-middle text-center">{{ $user->phone ?? '-' }}</td>
+                                        <td class="align-middle text-center"><?php echo e($user->phone ?? '-'); ?></td>
                                         <td class="align-middle text-center">
-                                            @if ($user->status == 1)
+                                            <?php if($user->status == 1): ?>
                                                 <span class="status-badge status-active">
-                                                    <i class="fas fa-check-circle me-1"></i> {{ __('dashboard.active') }}
+                                                    <i class="fas fa-check-circle me-1"></i> <?php echo e(__('dashboard.active')); ?>
+
                                                 </span>
-                                            @else
+                                            <?php else: ?>
                                                 <span class="status-badge status-inactive">
-                                                    <i class="fas fa-times-circle me-1"></i> {{ __('dashboard.inactive') }}
+                                                    <i class="fas fa-times-circle me-1"></i> <?php echo e(__('dashboard.inactive')); ?>
+
                                                 </span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
                                         <td class="align-middle text-center">
-                                            @if (!empty($user->getRoleNames()))
-                                                @foreach ($user->getRoleNames() as $rolename)
+                                            <?php if(!empty($user->getRoleNames())): ?>
+                                                <?php $__currentLoopData = $user->getRoleNames(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rolename): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <span class="role-badge">
-                                                        <i class="fas fa-shield-alt me-1"></i> {{ $rolename }}
+                                                        <i class="fas fa-shield-alt me-1"></i> <?php echo e($rolename); ?>
+
                                                     </span>
-                                                @endforeach
-                                            @else
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php else: ?>
                                                 <span class="text-muted">-</span>
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
                                         <td class="align-middle text-center">
-                                            @php
+                                            <?php
                                                 // Define the consistent default image path
                                                 $defaultImagePath = asset('admin/assets/img/emp_default.png');
-                                            @endphp
-                                            {{-- Check if profile_image exists AND is not the default placeholder string --}}
-                                            @if ($user->profile_image && $user->profile_image !== 'user_default.webp')
-                                                <img src="{{ asset('storage/' . $user->profile_image) }}"
-                                                    class="user-avatar" alt="{{ $user->name }}"
-                                                    onerror="this.onerror=null; this.src='{{ $defaultImagePath }}';">
-                                            @else
-                                                {{-- Display the default image if no custom image or if it's the default string --}}
-                                                <img src="{{ $defaultImagePath }}" class="user-avatar"
+                                            ?>
+                                            
+                                            <?php if($user->profile_image && $user->profile_image !== 'user_default.webp'): ?>
+                                                <img src="<?php echo e(asset('storage/' . $user->profile_image)); ?>"
+                                                    class="user-avatar" alt="<?php echo e($user->name); ?>"
+                                                    onerror="this.onerror=null; this.src='<?php echo e($defaultImagePath); ?>';">
+                                            <?php else: ?>
+                                                
+                                                <img src="<?php echo e($defaultImagePath); ?>" class="user-avatar"
                                                     alt="صورة افتراضية">
-                                            @endif
+                                            <?php endif; ?>
                                         </td>
                                         <td class="align-middle text-center">
                                             <div class="btn-group actions-group">
-                                                <a href="{{ route('users.show', $user->id) }}"
-                                                    class="btn-action btn-view" title="{{ __('dashboard.view') }}">
+                                                <a href="<?php echo e(route('users.show', $user->id)); ?>"
+                                                    class="btn-action btn-view" title="<?php echo e(__('dashboard.view')); ?>">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('users.edit', $user->id) }}"
-                                                    class="btn-action btn-edit" title="{{ __('dashboard.edit') }}">
+                                                <a href="<?php echo e(route('users.edit', $user->id)); ?>"
+                                                    class="btn-action btn-edit" title="<?php echo e(__('dashboard.edit')); ?>">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
-                                                <form action="{{ route('users.forceDelete', $user->id) }}" method="POST"
+                                                <form action="<?php echo e(route('users.forceDelete', $user->id)); ?>" method="POST"
                                                     class="d-inline delete-form">
-                                                    @csrf
-                                                    @method('DELETE')
+                                                    <?php echo csrf_field(); ?>
+                                                    <?php echo method_field('DELETE'); ?>
                                                     <button type="button" class="btn-action btn-delete delete-btn"
-                                                        title="{{ __('dashboard.delete') }}">
+                                                        title="<?php echo e(__('dashboard.delete')); ?>">
                                                         <i class="fas fa-trash"></i>
                                                     </button>
                                                 </form>
                                             </div>
                                         </td>
                                     </tr>
-                                @empty
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                                     <tr>
                                         <td colspan="8" class="text-center py-5">
                                             <div class="empty-state">
                                                 <i class="fas fa-users fa-3x mb-3"></i>
-                                                <h4>{{ __('dashboard.no_users_found') }}</h4>
+                                                <h4><?php echo e(__('dashboard.no_users_found')); ?></h4>
                                                 <p class="text-muted">
-                                                    {{ __('dashboard.add_new_user_to_get_started') }}
+                                                    <?php echo e(__('dashboard.add_new_user_to_get_started')); ?>
+
                                                 </p>
-                                                <a href="{{ route('users.create') }}"
+                                                <a href="<?php echo e(route('users.create')); ?>"
                                                     class="btn btn-primary mt-3 add-user-btn">
                                                     <i class="fas fa-plus me-2"></i>
-                                                    {{ __('dashboard.add_user') }}
+                                                    <?php echo e(__('dashboard.add_user')); ?>
+
                                                 </a>
                                             </div>
                                         </td>
                                     </tr>
-                                @endforelse
+                                <?php endif; ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                @if ($users->hasPages())
+                <?php if($users->hasPages()): ?>
                     <div class="card-footer">
-                        {{ $users->links() }}
+                        <?php echo e($users->links()); ?>
+
                     </div>
-                @endif
+                <?php endif; ?>
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -722,11 +736,13 @@
                                 <i class="fas fa-users fa-3x text-purple mb-3"></i>
                                 <h4 class="text-purple">لم يتم العثور على مستخدمين</h4>
                                 <p class="text-muted">
-                                    {{ __('dashboard.no_users_found') }}
+                                    <?php echo e(__('dashboard.no_users_found')); ?>
+
                                 </p>
-                                <a href="{{ route('users.create') }}" class="btn btn-primary mt-3">
+                                <a href="<?php echo e(route('users.create')); ?>" class="btn btn-primary mt-3">
                                     <i class="fas fa-plus me-2"></i>
-                                    {{ __('dashboard.add_user') }}
+                                    <?php echo e(__('dashboard.add_user')); ?>
+
                                 </a>
                             </div>
                         </td>
@@ -800,7 +816,7 @@
                 const footerCount = document.querySelector('.card-footer .text-muted');
                 if (footerCount) {
                     footerCount.innerHTML =
-                        `<i class="fas fa-info-circle me-1"></i> ${filteredRows.length} {{ __('dashboard.users') }}`;
+                        `<i class="fas fa-info-circle me-1"></i> ${filteredRows.length} <?php echo e(__('dashboard.users')); ?>`;
                 }
             };
 
@@ -845,4 +861,6 @@
             });
         });
     </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('admin.layouts.master', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH D:\All My Project\GitHub_Project\AstroDev GitHub\Alqadsy\Hostinger\Alqadsy Hostinger\resources\views/admin/role-permission/user/index.blade.php ENDPATH**/ ?>

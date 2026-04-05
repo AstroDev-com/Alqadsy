@@ -24,7 +24,7 @@ class ProductController extends Controller
             $query->where('category_id', $request->category_id);
         }
 
-        $products = $query->latest()->paginate(50);
+        $products = $query->orderBy('id', 'desc')->paginate(50);
         $categories = Category::all();
 
         return view('admin.products.index', compact('products', 'categories'));

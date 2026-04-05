@@ -20,7 +20,7 @@ Route::group([
     'prefix' => LaravelLocalization::setLocale(),
     'middleware' => ['auth', 'localeSessionRedirect', 'localizationRedirect']
 ], function () {
-    Route::get('/dashboard_control', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // ======================================  ::       permissions      :: ======================================
     Route::resource('permissions', PermissionController::class);

@@ -32,12 +32,14 @@ class LoginController extends Controller
             ]);
         }
 
-        // التحقق من كلمة المرور
-        if (!Hash::check($credentials['password'], $user->password)) {
+        // التحقق من حالة الحساب
+        if ($user->status != 1) {
             throw ValidationException::withMessages([
-                'email' => ['These credentials do not match our records.'],
+                'email' => ['هذا الحساب معطل. يرجى التواصل مع الإدارة.'],
             ]);
         }
+
+        // التحقق من كلمة المرور
 
         // محاولة تسجيل الدخول
         if (Auth::attempt($credentials)) {
