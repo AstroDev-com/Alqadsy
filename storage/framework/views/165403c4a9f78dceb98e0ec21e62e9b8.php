@@ -142,6 +142,35 @@
         .lg-outer .lg-thumb-item.active, .lg-outer .lg-thumb-item:hover {
             border-color: #fff !important;
         }
+
+        /* إيقاف خاصية الإخفاء التلقائي تماماً عند التحريك أو التفاعل */
+        .lg-outer.lg-hide-items .lg-thumb-outer,
+        .lg-outer.lg-hide-items .lg-sub-html,
+        .lg-outer.lg-hide-items .lg-toolbar,
+        .lg-outer.lg-hide-items .lg-prev,
+        .lg-outer.lg-hide-items .lg-next {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translate3d(0, 0, 0) !important;
+        }
+
+        /* تنسيق إضافي لضمان ظهور شريط الصور والوصف دوماً */
+        .lg-outer .lg-thumb-outer, .lg-outer .lg-sub-html {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: none !important;
+        }
+
+        .lg-outer .lg-thumb-outer {
+            bottom: 5px !important;
+            z-index: 1080;
+        }
+        
+        .lg-outer .lg-sub-html {
+            bottom: 100px !important;
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            z-index: 1070;
+        }
     </style>
 
     <!-- Schema.org Structured Data for LocalBusiness -->
@@ -298,7 +327,7 @@
             
             gallery.lightGallery({
                 mode: 'lg-slide',
-                thumbnail: true, // تفعيل شريط الصور المصغرة
+                thumbnail: true,
                 animateThumb: true,
                 showThumbByDefault: true,
                 autoplayThumbPause: true,
@@ -308,9 +337,10 @@
                 enableSwipe: true,
                 enableDrag: true,
                 speed: 400,
-                hideBarsDelay: 9999999, // منع الاختفاء التلقائي للشريط والأدوات
-                toggleThumb: false, // منع المستخدم من إغلاق شريط الصور المصغرة بالخطأ
-                allowMediaOverlap: true,
+                hideBarsDelay: 9999999,
+                toggleThumb: false,
+                allowMediaOverlap: false,
+                pullCaptionUp: true,
                 zoom: true,
                 actualSize: false,
                 scale: 1,

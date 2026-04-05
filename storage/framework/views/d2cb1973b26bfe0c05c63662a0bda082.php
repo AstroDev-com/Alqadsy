@@ -10,11 +10,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="lightgallery">
+            <div class="dense-gallery" id="lightgallery">
                 <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="<?php echo e(asset($product->image ? $product->image : 'admin/assets/img/product_default.png')); ?>" data-sub-html="<h4><?php echo e($product->name); ?></h4>">
+                    <div class="item" data-aos="fade" data-src="<?php echo e(asset($product->image ? $product->image : 'admin/assets/img/product_default.png')); ?>" data-sub-html="<h4><?php echo e($product->name); ?></h4>">
                         <a href="<?php echo e(route('frontend.product.show', $product->id)); ?>">
-                            <img src="<?php echo e(asset($product->image ? $product->image : 'admin/assets/img/product_default.png')); ?>" alt="<?php echo e($product->name); ?>" class="img-fluid">
+                            <img src="<?php echo e(asset($product->image ? $product->image : 'admin/assets/img/product_default.png')); ?>" 
+                                 alt="<?php echo e($product->name); ?>" 
+                                 class="img-fluid" 
+                                 loading="lazy">
                         </a>
                     </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -22,6 +25,12 @@
                         <p>لا توجد منتجات في هذا التصنيف حالياً.</p>
                     </div>
                 <?php endif; ?>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 d-flex justify-content-center">
+                    <?php echo e($products->links()); ?>
+
+                </div>
             </div>
         </div>
     </div>
