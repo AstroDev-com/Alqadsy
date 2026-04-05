@@ -13,6 +13,14 @@
 
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li class="active"><a href="<?php echo e(url('/')); ?>">الرئيسية</a></li>
+                <li class="has-children">
+                  <a href="#">الأقسام</a>
+                  <ul class="dropdown">
+                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <li><a href="<?php echo e(route('frontend.category.products', $category->id)); ?>"><?php echo e($category->name); ?></a></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  </ul>
+                </li>
                 <li><a href="<?php echo e(route('gallery')); ?>">المعرض</a></li>
                 
                 <li><a href="<?php echo e(route('about')); ?>">من نحن</a></li>

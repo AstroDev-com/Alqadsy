@@ -42,7 +42,7 @@ class LoginController extends Controller
         // محاولة تسجيل الدخول
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('dashboard_control');
         }
 
         throw ValidationException::withMessages([

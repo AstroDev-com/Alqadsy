@@ -1586,13 +1586,15 @@ a:hover {
     height: 40px;
     line-height: 40px;
     border-radius: 50%;
-    border: 1px solid #ccc;
+    border: 1px solid #333;
+    background-color: #000 !important;
+    color: #fff !important;
 }
 
 .site-block-27 ul li.active a,
 .site-block-27 ul li.active span {
-    background: #20c997;
-    color: #fff;
+    background: #20c997 !important;
+    color: #fff !important;
     border: 1px solid transparent;
 }
 
@@ -1735,6 +1737,7 @@ a:hover {
     filter: none;
     -webkit-filter: none;
     -webkit-transform: none;
+    transform: none;
     transition: none;
 }
 
@@ -1816,6 +1819,7 @@ a:hover {
     filter: none;
     -webkit-filter: none;
     -webkit-transform: none;
+    transform: none;
     transition: none;
 }
 
@@ -1833,5 +1837,65 @@ img:hover {
     filter: none;
     -webkit-filter: none;
     -webkit-transform: none;
+    transform: none;
     transition: none;
+}
+
+/* Pagination disabled states */
+.page-item.disabled .page-link {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+}
+
+/* Global Pagination and Page Link Styles */
+.pagination {
+    background-color: transparent !important;
+}
+
+.page-link {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #333 !important;
+}
+
+.page-link:hover {
+    background-color: #222 !important;
+    color: #fff !important;
+}
+
+/* Laptop View Refinement (Dark Mode) */
+@media (min-width: 992px) {
+    body, .site-wrap, .main-content {
+        background-color: #000 !important;
+        color: #fff !important;
+    }
+
+    /* Categories Dropdown Dark Theme */
+    .site-navbar .site-navigation .site-menu .has-children .dropdown {
+        background: #000 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    .site-navbar .site-navigation .site-menu .has-children .dropdown li a {
+        color: rgba(255, 255, 255, 0.7) !important;
+        transition: all 0.3s ease;
+    }
+
+    .site-navbar .site-navigation .site-menu .has-children .dropdown li a:hover {
+        background: #111 !important;
+        color: #20c997 !important; /* Elegant green accent from original style */
+        padding-right: 25px !important; /* Subtle slide effect for RTL */
+    }
+
+    /* Ensure dropdown arrow color */
+    .site-navbar .site-navigation .site-menu .has-children > a:before {
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    /* Premium Glow for Navbar in Laptop mode */
+    .site-navbar {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
 }

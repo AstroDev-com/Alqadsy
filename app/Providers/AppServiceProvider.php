@@ -27,11 +27,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
-
-        Schema::defaultStringLength(191); // Add this line for older MySQL/MariaDB versions
+        Schema::defaultStringLength(191);
         Model::preventLazyLoading(! App::isProduction());
 
-        // Article::observe(ArticleObserver::class); // Keep this commented or remove if observer deleted
-        // Category::observe(CategoryObserver::class); // REMOVED
+        // مشاركة الأقسام مع الهيدر
+        view()->composer('frontend.layouts.header', function ($view) {
+            $view->with('categories', \App\Models\Category::all());
+        });
     }
 }

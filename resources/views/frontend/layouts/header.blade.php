@@ -13,6 +13,14 @@
 
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li class="active"><a href="{{ url('/') }}">الرئيسية</a></li>
+                <li class="has-children">
+                  <a href="#">الأقسام</a>
+                  <ul class="dropdown">
+                    @foreach($categories as $category)
+                      <li><a href="{{ route('frontend.category.products', $category->id) }}">{{ $category->name }}</a></li>
+                    @endforeach
+                  </ul>
+                </li>
                 <li><a href="{{ route('gallery') }}">المعرض</a></li>
                 {{-- <li><a href="services.html">الخدمات</a></li> --}}
                 <li><a href="{{ route('about') }}">من نحن</a></li>

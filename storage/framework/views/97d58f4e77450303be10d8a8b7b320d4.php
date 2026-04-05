@@ -1,14 +1,11 @@
     <div class="footer py-4">
         <div class="container-fluid text-center">
             <p>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;
-                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                حقوق النشر &copy;
                 <script>
                     document.write(new Date().getFullYear());
-                </script> All rights reserved | <i class="icon-heart-o" aria-hidden="true"></i> by <a
-                    href="https://astrodevye.com" >AstroDev</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </script> جميع الحقوق محفوظة | صنع بكل <i class="icon-heart-o" aria-hidden="true"></i> بواسطة <a
+                    href="https://astrodevye.com" target="_blank">AstroDev</a>
             </p>
         </div>
     </div>
