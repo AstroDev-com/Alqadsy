@@ -105,19 +105,25 @@
     <div class="container py-5">
         <h2 class="text-center mb-4">أحدث أعمالنا</h2>
         <p class="text-center text-muted mb-5">تصفح أحدث الأعمال المنجزة من قبل فريقنا.</p>
-        <div class="row" id="lightgallery">
+        <div class="dense-gallery" id="lightgallery">
             <?php $__empty_1 = true; $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $info): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                 <?php
                     $imageUrl = $info->image ? asset($info->image) : asset('public/admin/assets/img/product_default.png');
                 ?>
-                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 item" data-aos="fade" data-src="<?php echo e($imageUrl); ?>" data-sub-html="<h4><?php echo e($info->name); ?></h4><?php if(!empty($info->description)): ?><p><?php echo e(Str::limit($info->description, 80)); ?></p><?php endif; ?>">
-                    <a href="<?php echo e($imageUrl); ?>"><img src="<?php echo e($imageUrl); ?>" alt="<?php echo e($info->name); ?>" class="img-fluid"></a>
+                <div class="item" data-aos="fade" data-src="<?php echo e($imageUrl); ?>" data-sub-html="<h4><?php echo e($info->name); ?></h4><?php if(!empty($info->description)): ?><p><?php echo e(Str::limit($info->description, 80)); ?></p><?php endif; ?>">
+                    <a href="<?php echo e($imageUrl); ?>"><img src="<?php echo e($imageUrl); ?>" alt="<?php echo e($info->name); ?>" class="img-fluid" loading="lazy"></a>
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                 <div class="col-12">
                     <div class="alert alert-info text-center">لا توجد منتجات لعرضها حالياً.</div>
                 </div>
             <?php endif; ?>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center">
+                <?php echo e($products->links()); ?>
+
+            </div>
         </div>
 
     </div>

@@ -89,6 +89,60 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <style>
+        /* تنسيق الشبكة الكثيفة المطابق لطلب المستخدم */
+        .dense-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -2px;
+            margin-left: -2px;
+        }
+        .dense-gallery .item {
+            padding: 2px;
+            flex: 0 0 25%; /* 4 صور في صف الموبايل */
+            max-width: 25%;
+        }
+        @media (min-width: 768px) {
+            .dense-gallery .item {
+                flex: 0 0 16.666%; /* 6 صور في التابلت */
+                max-width: 16.666%;
+            }
+        }
+        @media (min-width: 1200px) {
+            .dense-gallery .item {
+                flex: 0 0 12.5%; /* 8 صور في الشاشات الكبيرة */
+                max-width: 12.5%;
+            }
+        }
+        .dense-gallery .item img {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* صور مربعة لتناسق احترافي */
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .dense-gallery .item img:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* تحسين شكل معرض الصور (LightGallery) */
+        .lg-outer .lg-thumb-outer {
+            background-color: rgba(0, 0, 0, 0.45) !important;
+            backdrop-filter: blur(10px);
+        }
+        .lg-outer .lg-thumb-item {
+            border-radius: 6px !important;
+            border: 2px solid transparent !important;
+            transition: all 0.2s ease;
+        }
+        .lg-outer .lg-thumb-item.active, .lg-outer .lg-thumb-item:hover {
+            border-color: #fff !important;
+        }
+    </style>
 
     <!-- Schema.org Structured Data for LocalBusiness -->
     <script type="application/ld+json">
@@ -242,13 +296,20 @@
             
             gallery.lightGallery({
                 mode: 'lg-slide',
+                thumbnail: true, // تفعيل شريط الصور المصغرة
+                animateThumb: true,
+                showThumbByDefault: true,
+                autoplayThumbPause: true,
+                currentPagerPosition: 'middle',
                 startClass: '',
                 showAfterLoad: true,
                 enableSwipe: true,
                 enableDrag: true,
                 speed: 400,
-                hideBarsDelay: 6000,
-                zoom: false,
+                hideBarsDelay: 9999999, // منع الاختفاء التلقائي للشريط والأدوات
+                toggleThumb: false, // منع المستخدم من إغلاق شريط الصور المصغرة بالخطأ
+                allowMediaOverlap: true,
+                zoom: true,
                 actualSize: false,
                 scale: 1,
                 hash: true,

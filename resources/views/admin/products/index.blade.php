@@ -131,7 +131,7 @@
                     <tbody>
                         @foreach ($products as $index => $product)
                             <tr>
-                                <td>{{ $products->count() - $index }}</td>
+                                <td>{{ $products->firstItem() + $index }}</td>
                                 <td class="fw-semibold">{{ $product->name }}</td>
                                 <td>{{ Str::limit($product->description, 50) }}</td>
                                 <td>
@@ -175,7 +175,9 @@
                 </table>
                 <div id="noResults" class="no-results" style="display:none;">لا توجد نتائج مطابقة.</div>
             </div>
-            {{-- {{ $products->links() }} --}}
+                <div class="mt-4">
+                    {{ $products->links() }}
+                </div>
         </div>
     </div>
     <script>
