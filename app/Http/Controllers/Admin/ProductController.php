@@ -89,19 +89,20 @@ class ProductController extends Controller
                 $imageInfo = @getimagesize($image->getRealPath());
                 if ($imageInfo === false) continue;
 
-                $filename = Str::slug($generatedName) . '-' . time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+                $filename = Str::slug($generatedName) . '-' . time() . '-' . uniqid() . '.webp';
                 $manager = new ImageManager(new Driver());
                 $img = $manager->read($image->getRealPath());
                 
-                $img->scaleDown(770, 513);
+                // رفع الأبعاد إلى 1200 لضمان دقة وتفاصيل ممتازة
+                $img->scaleDown(1200, 800);
 
                 // إضافة العلامة المائية
                 $watermarkImagePath = public_path('frontend/images/Alqadsybold.jpg');
                 if (file_exists($watermarkImagePath)) {
                     $watermarkImg = $manager->read($watermarkImagePath);
-                    $watermarkWidth = 150;
-                    $watermarkHeight = 150;
-                    $watermarkImg->scaleDown(150, 150);
+                    $watermarkWidth = 200;
+                    $watermarkHeight = 200;
+                    $watermarkImg->scaleDown(200, 200);
 
                     $watermarkX = (int)(($img->width() - $watermarkImg->width()) / 2);
                     $watermarkY = (int)(($img->height() - $watermarkImg->height()) / 2);
@@ -123,7 +124,7 @@ class ProductController extends Controller
                 if (!file_exists($publicPath)) {
                     mkdir($publicPath, 0777, true);
                 }
-                $img->save($publicPath . '/' . $filename);
+                $img->toWebp(90)->save($publicPath . '/' . $filename);
                 $imagePath = 'images/products/' . $filename;
 
                 // حفظ المنتج في قاعدة البيانات
@@ -214,18 +215,19 @@ class ProductController extends Controller
                 return redirect()->back()->withErrors(['image' => 'نوع الصورة غير مدعوم.']);
             }
 
-            $filename = Str::slug($request->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
+            $filename = Str::slug($request->name) . '-' . time() . '.webp';
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image->getRealPath());
-            $img->scaleDown(770, 513);
+            // رفع الأبعاد إلى 1200 لضمان دقة وتفاصيل ممتازة
+            $img->scaleDown(1200, 800);
             // إضافة العلامة المائية (صورة + رقم) في منتصف الصورة
             $watermarkImagePath = public_path('frontend/images/Alqadsybold.jpg');
             if (file_exists($watermarkImagePath)) {
                 $watermarkImg = $manager->read($watermarkImagePath);
                 // ضبط حجم العلامة المائية إلى 90×127 بكسل
-                $watermarkWidth = 90;
-                $watermarkHeight = 127;
-                $watermarkImg->scaleDown(90, 127);
+                $watermarkWidth = 150;
+                $watermarkHeight = 150;
+                $watermarkImg->scaleDown(150, 150);
 
                 // حساب الموضع المركزي للصورة
                 $watermarkX = (int)(($img->width() - $watermarkImg->width()) / 2);
@@ -250,7 +252,7 @@ class ProductController extends Controller
             if (!file_exists($publicPath)) {
                 mkdir($publicPath, 0777, true);
             }
-            $img->save($publicPath . '/' . $filename);
+            $img->toWebp(90)->save($publicPath . '/' . $filename);
             $product->image = 'images/products/' . $filename;
         }
 
