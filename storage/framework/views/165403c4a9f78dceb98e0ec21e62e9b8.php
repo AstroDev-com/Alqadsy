@@ -339,8 +339,8 @@
                 speed: 400,
                 hideBarsDelay: 9999999,
                 toggleThumb: false,
-                allowMediaOverlap: false,
-                pullCaptionUp: true,
+                allowMediaOverlap: false, // منع التداخل لضمان ظهور الشريط
+                pullCaptionUp: true, // رفع الوصف ليظهر فوق شريط الصور
                 zoom: true,
                 actualSize: false,
                 scale: 1,
