@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         // بناء قواعد التحقق بناءً على توفر fileinfo وحجم الخادم (2 ميجابايت)
-        $imageRules = ['required', 'max:2048'];
+        $imageRules = ['required', 'max:10240']; // الحد الجديد 10 ميجا بدلاً من 2 ميجا
         if (function_exists('finfo_open')) {
             $imageRules[] = 'image';
             $imageRules[] = 'mimes:jpeg,png,jpg,gif,svg,webp';
@@ -47,8 +47,8 @@ class ProductController extends Controller
 
         $messages = [
             'images.required' => 'يرجى اختيار صورة واحدة على الأقل.',
-            'images.*.uploaded' => 'فشل تحميل إحدى الصور. قد يكون حجم الملف أكبر من الحد المسموح به في الخادم (2 ميجابايت).',
-            'images.*.max' => 'حجم الصورة يجب ألا يتجاوز 2 ميجابايت.',
+            'images.*.uploaded' => 'فشل تحميل إحدى الصور. قد يكون حجم الملف أكبر من الحد المسموح به في الخادم (10 ميجابايت).',
+            'images.*.max' => 'حجم الصورة يجب ألا يتجاوز 10 ميجابايت.',
         ];
 
         $request->validate([
@@ -93,10 +93,7 @@ class ProductController extends Controller
                 $manager = new ImageManager(new Driver());
                 $img = $manager->read($image->getRealPath());
                 
-                $img->resize(770, 513, function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                });
+                $img->scaleDown(770, 513);
 
                 // إضافة العلامة المائية
                 $watermarkImagePath = public_path('frontend/images/Alqadsybold.jpg');
@@ -104,9 +101,7 @@ class ProductController extends Controller
                     $watermarkImg = $manager->read($watermarkImagePath);
                     $watermarkWidth = 150;
                     $watermarkHeight = 150;
-                    $watermarkImg->resize($watermarkWidth, $watermarkHeight, function ($constraint) {
-                        $constraint->upsize();
-                    });
+                    $watermarkImg->scaleDown(150, 150);
 
                     $watermarkX = (int)(($img->width() - $watermarkImg->width()) / 2);
                     $watermarkY = (int)(($img->height() - $watermarkImg->height()) / 2);
@@ -163,7 +158,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         // Build validation rules conditionally based on fileinfo availability
-        $imageRules = ['nullable', 'max:15360'];
+        $imageRules = ['nullable', 'max:10240'];
         if (function_exists('finfo_open')) {
             $imageRules[] = 'image';
             $imageRules[] = 'mimes:jpeg,png,jpg,gif,svg,webp';
@@ -222,10 +217,7 @@ class ProductController extends Controller
             $filename = Str::slug($request->name) . '-' . time() . '.' . $image->getClientOriginalExtension();
             $manager = new ImageManager(new Driver());
             $img = $manager->read($image->getRealPath());
-            $img->resize(770, 513, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
+            $img->scaleDown(770, 513);
             // إضافة العلامة المائية (صورة + رقم) في منتصف الصورة
             $watermarkImagePath = public_path('frontend/images/Alqadsybold.jpg');
             if (file_exists($watermarkImagePath)) {
@@ -233,9 +225,7 @@ class ProductController extends Controller
                 // ضبط حجم العلامة المائية إلى 90×127 بكسل
                 $watermarkWidth = 90;
                 $watermarkHeight = 127;
-                $watermarkImg->resize($watermarkWidth, $watermarkHeight, function ($constraint) {
-                    $constraint->upsize();
-                });
+                $watermarkImg->scaleDown(90, 127);
 
                 // حساب الموضع المركزي للصورة
                 $watermarkX = (int)(($img->width() - $watermarkImg->width()) / 2);
